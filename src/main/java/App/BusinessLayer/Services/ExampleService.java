@@ -10,7 +10,7 @@ import javax.persistence.EntityNotFoundException;
 
 @Service
 public class ExampleService {
-        @Autowired
+    @Autowired
     private ExampleRepository exampleRepository;
 
     public List<ExampleModel> findAll(){
