@@ -10,6 +10,7 @@ public class WheelsUsBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WheelsUsBackendApplication.class, args);
+                
 	}
 
 }
