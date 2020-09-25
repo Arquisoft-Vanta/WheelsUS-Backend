@@ -22,7 +22,7 @@ import lombok.Data;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "idExample")
-public class ExampleModel {
+public class ExampleModel{
 
     public ExampleModel() {
 
