@@ -28,47 +28,47 @@ import lombok.Data;
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idUsuario")
-public class UsuarioModel {
+        property = "idUser")
+public class UserModel {
     
-    public UsuarioModel() {
+    public UserModel() {
 
     }
 
-    public UsuarioModel(String nombre, String documento,String telefono,String usuarioUniversitario,String correo,String direccion,String password, LocalDate horaDeRegistro, String Rh) {
-        this.nombre = nombre;
-        this.documento = documento;
-        this.telefono = telefono;
-        this.usuarioUniversitario =usuarioUniversitario;
-        this.correo = correo;
-        this.direccion = direccion;
+    public UserModel(String name, String document,String phone,String userUniversity,String mail,String address,String password, LocalDate registryDatatime, String Rh) {
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.userUniversity =userUniversity;
+        this.mail = mail;
+        this.address = address;
         this.password = password;
-        this.horaDeRegistro = horaDeRegistro;
+        this.registryDatatime  = registryDatatime;
         this.Rh = Rh;
     }
 
     @Id // Primary key, con autoincremento
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUsuario;
+    private int idUser;
 
-    private String nombre;
+    private String name;
 
-    private String documento;
+    private String document;
     
-    private String telefono;
+    private String phone;
     
-    private String usuarioUniversitario;
+    private String userUniversity;
     
-    private String correo;
+    private String mail;
     
-    private String direccion;
+    private String address;
     
     private String password;
     
   
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate horaDeRegistro;
+    private LocalDate registryDatatime;
 
     private String Rh;
 

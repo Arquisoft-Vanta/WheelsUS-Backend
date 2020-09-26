@@ -6,7 +6,7 @@
 package App.BusinessLayer.Repositories;
 
 
-import App.DataLayer.Models.UsuarioModel;
+import App.DataLayer.Models.UserModel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UsuarioRepository extends CrudRepository<UsuarioModel, Integer> {
+public interface UserRepository extends CrudRepository<UserModel, Integer> {
     
 }
