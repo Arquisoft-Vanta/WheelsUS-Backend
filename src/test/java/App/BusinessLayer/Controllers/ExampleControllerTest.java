@@ -141,7 +141,6 @@ public class ExampleControllerTest {
     @Test
     public void testDeleteById() throws Exception {
         Mockito.doThrow(new IllegalArgumentException()).when(exampleService).deleteById(Mockito.anyInt());
-        // exampleService.deleteById(Mockito.anyInt());
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         System.out.println("---------------------------------------------------------------------------");

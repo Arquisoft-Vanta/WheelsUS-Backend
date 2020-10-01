@@ -42,7 +42,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestPropertySource(locations = "classpath:test.properties")
-@Sql("/test-postgres.sql")
 @AutoConfigureMockMvc
 //@WebMvcTest(value = ExampleController.class)
 //@WithMockUser
@@ -82,14 +81,13 @@ public class ExampleControllerIntegration {
      * Test of findAll method, of class ExampleController.
      */
     @Test
+    @Sql("/test-postgres.sql")
     public void testFindAll() throws Exception {
 //        List list = new ArrayList();
 //        list.add(mockExampleModel);
 //        Mockito.when(exampleService.findAll()).thenReturn(list);
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        System.out.println("---------------------------------------------------------------------------");
-        System.out.println(result.getResponse().getContentAsString());
         String expected = "[{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"1998-05-07\",hasCreditCard: false},"
                 + "{idExample:2,name:\"Cesar Pineda\",city:\"Bogota\",birthday:\"1999-09-11\",hasCreditCard: true}]";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
@@ -99,13 +97,12 @@ public class ExampleControllerIntegration {
      * Test of findById method, of class ExampleController.
      */
     @Test
+    @Sql("/test-postgres.sql")
     public void testFindById() throws Exception {
 
         // Mockito.when(exampleService.findById(Mockito.anyInt())).thenReturn(mockExampleModel);
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        System.out.println("---------------------------------------------------------------------------");
-        System.out.println(result.getResponse().getContentAsString());
         String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"1998-05-07\",hasCreditCard: false}";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
@@ -114,8 +111,9 @@ public class ExampleControllerIntegration {
      * Test of create method, of class ExampleController.
      */
     @Test
+    @Sql("/drop-tables.sql")
     public void testCreate() throws Exception {
-        String exampleJson = "{\"name\":\"Gonzalo Diaz\",\"city\":\"Bogota\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
+        String exampleJson = "{\"name\":\"Sebastian Reina\",\"city\":\"Cali\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
         //Mockito.when(exampleService.save(Mockito.any(ExampleModel.class))).thenReturn(mockExampleModel);
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .post("/example").with(csrf())
@@ -130,32 +128,30 @@ public class ExampleControllerIntegration {
     /**
      * Test of update method, of class ExampleController.
      */
-//    @Test
-//    public void testUpdate() throws Exception {
-//        String exampleJson = "{\"name\":\"Gonzalo Diaz\",\"city\":\"Medellin\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
-//        Mockito.when(exampleService.save(Mockito.any(ExampleModel.class))).thenReturn(mockExampleModel1);
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders
-//                .post("/example").with(csrf())
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(exampleJson)
-//                .contentType(MediaType.APPLICATION_JSON);
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
-//    }
+    @Test
+    @Sql("/test-postgres.sql")
+    public void testUpdate() throws Exception {
+        String exampleJson = "{\"idExample\":1,\"name\":\"Gonzalo Diaz\",\"city\":\"Berlin\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
+        String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Berlin\",birthday:\"2020-09-30\",hasCreditCard: true}";
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post("/example").with(csrf())
+                .accept(MediaType.APPLICATION_JSON)
+                .content(exampleJson)
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
+        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+
+    }
 
     /**
      * Test of deleteById method, of class ExampleController.
      */
-//    @Test
-//    public void testDeleteById() throws Exception {
-//        Mockito.doThrow(new IllegalArgumentException()).when(exampleService).deleteById(Mockito.anyInt());
-//        // exampleService.deleteById(Mockito.anyInt());
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
-//        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-//        System.out.println("---------------------------------------------------------------------------");
-//        System.out.println(result.getResponse().getContentAsString());
-//        String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"2020-09-30\",hasCreditCard: true}";
-//        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
-//    }
-
+    @Test
+    @Sql("/test-postgres.sql")
+    public void testDeleteById() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
+    }
 }

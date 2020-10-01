@@ -57,7 +57,7 @@ public class ExampleController {
     }
 
     // PutMapping hace una peticion put a la ruta del controlador
-    @PutMapping("/{id}")
+    @PutMapping
     public ResponseEntity<ExampleModel> update(@RequestBody ExampleModel exampleModel) {
         try {
             // Busqueda de prueba para saber si el registro ya existe

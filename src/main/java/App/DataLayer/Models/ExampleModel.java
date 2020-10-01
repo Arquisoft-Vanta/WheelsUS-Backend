@@ -34,6 +34,14 @@ public class ExampleModel{
         this.birthday = birthday;
         this.hasCreditCard = hasCreditCard;
     }
+    
+    public ExampleModel(int idExample, String name, String city, LocalDate birthday, boolean hasCreditCard) {
+        this.idExample = idExample;
+        this.name = name;
+        this.city = city;
+        this.birthday = birthday;
+        this.hasCreditCard = hasCreditCard;
+    }
 
     @Id // Primary key, con autoincremento
     @GeneratedValue(strategy = GenerationType.AUTO)
