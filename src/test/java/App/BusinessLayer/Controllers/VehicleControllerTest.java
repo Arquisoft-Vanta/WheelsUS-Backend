@@ -6,8 +6,11 @@
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.ExampleService;
+import App.BusinessLayer.Services.VehicleService;
 import App.DataLayer.Models.ExampleModel;
+import App.DataLayer.Models.VehicleModel;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -37,20 +40,20 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
  * @author gonza
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = ExampleController.class)
+@WebMvcTest(value = VehicleController.class)
 @WithMockUser
-public class ExampleControllerTest {
+public class VehicleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ExampleService exampleService;
+    private VehicleService vehicleService;
 
-    ExampleModel mockExampleModel = new ExampleModel(1, "Gonzalo Diaz", "Bogota", LocalDate.parse("2020-09-30"), true);
-    ExampleModel mockExampleModel1 = new ExampleModel(1, "Gonzalo Diaz", "Medellin", LocalDate.parse("2020-09-30"), true);
+    VehicleModel mockVehicleModel = new VehicleModel(1, 1, "ABC123", 2, "Sedan", 2010, "Azul", LocalDateTime.parse("2020-09-30T10:11:30"), "imagen", 3);
+    VehicleModel mockVehicleModel1 = new VehicleModel(1, 1, "CJK895", 2, "Sedan", 2020, "Azul", LocalDateTime.parse("2020-09-30T10:11:30"), "imagen", 2);
 
-    public ExampleControllerTest() {
+    public VehicleControllerTest() {
     }
 
     @BeforeAll
@@ -75,11 +78,11 @@ public class ExampleControllerTest {
     @Test
     public void testFindAll() throws Exception {
         List list = new ArrayList();
-        list.add(mockExampleModel);
-        Mockito.when(exampleService.findAll()).thenReturn(list);
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example").accept(MediaType.APPLICATION_JSON);
+        list.add(mockVehicleModel);
+        Mockito.when(vehicleService.findAll()).thenReturn(list);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "[{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"2020-09-30\",hasCreditCard: true}]";
+        String expected = "[{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}]";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
@@ -89,10 +92,10 @@ public class ExampleControllerTest {
     @Test
     public void testFindById() throws Exception {
 
-        Mockito.when(exampleService.findById(Mockito.anyInt())).thenReturn(mockExampleModel);
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
+        Mockito.when(vehicleService.findById(Mockito.anyInt())).thenReturn(mockVehicleModel);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"2020-09-30\",hasCreditCard: true}";
+        String expected = "{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
@@ -101,10 +104,10 @@ public class ExampleControllerTest {
      */
     @Test
     public void testCreate() throws Exception {
-        String exampleJson = "{\"name\":\"Gonzalo Diaz\",\"city\":\"Bogota\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
-        Mockito.when(exampleService.save(Mockito.any(ExampleModel.class))).thenReturn(mockExampleModel);
+        String exampleJson = "{\"vehicleOwner\":1,\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2,\"vehicleModel\":\"Sedan\",\"vehicleYear\":2010,\"vehicleColor\":\"Azul\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
+        Mockito.when(vehicleService.save(Mockito.any(VehicleModel.class))).thenReturn(mockVehicleModel);
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/example").with(csrf())
+                .post("/api/vehicle").with(csrf())
                 .accept(MediaType.APPLICATION_JSON)
                 .content(exampleJson)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -118,10 +121,10 @@ public class ExampleControllerTest {
      */
     @Test
     public void testUpdate() throws Exception {
-        String exampleJson = "{\"name\":\"Gonzalo Diaz\",\"city\":\"Medellin\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
-        Mockito.when(exampleService.save(Mockito.any(ExampleModel.class))).thenReturn(mockExampleModel1);
+        String exampleJson = "{\"idVehicle\":1,\"vehicleOwner\":1,\"vehicleLicenseplate\":\"UPJ420\",\"vehicleType\":2,\"vehicleModel\":\"Sedan\",\"vehicleYear\":2010,\"vehicleColor\":\"Azul\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
+        Mockito.when(vehicleService.save(Mockito.any(VehicleModel.class))).thenReturn(mockVehicleModel1);
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/example").with(csrf())
+                .post("/api/vehicle").with(csrf())
                 .accept(MediaType.APPLICATION_JSON)
                 .content(exampleJson)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -134,8 +137,8 @@ public class ExampleControllerTest {
      */
     @Test
     public void testDeleteById() throws Exception {
-        Mockito.doThrow(new IllegalArgumentException()).when(exampleService).deleteById(Mockito.anyInt());
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
+        Mockito.doThrow(new IllegalArgumentException()).when(vehicleService).deleteById(Mockito.anyInt());
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
     }
