@@ -22,13 +22,21 @@ import lombok.Data;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "idExample")
-public class ExampleModel {
+public class ExampleModel{
 
     public ExampleModel() {
 
     }
 
     public ExampleModel(String name, String city, LocalDate birthday, boolean hasCreditCard) {
+        this.name = name;
+        this.city = city;
+        this.birthday = birthday;
+        this.hasCreditCard = hasCreditCard;
+    }
+    
+    public ExampleModel(int idExample, String name, String city, LocalDate birthday, boolean hasCreditCard) {
+        this.idExample = idExample;
         this.name = name;
         this.city = city;
         this.birthday = birthday;
