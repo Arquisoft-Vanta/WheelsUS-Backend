@@ -1,6 +1,5 @@
 package App.BusinessLayer.Controllers;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -29,8 +28,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:test.properties")
 @AutoConfigureMockMvc
-
-public class VehicleControllerIntegration {
+public class ExampleControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +36,7 @@ public class VehicleControllerIntegration {
     @Autowired
     ObjectMapper objectmapper;
 
-    public VehicleControllerIntegration() {
+    public ExampleControllerIT() {
     }
 
     @BeforeAll
@@ -64,10 +62,10 @@ public class VehicleControllerIntegration {
     @Sql("/test-postgres.sql")
     public void testFindAll() throws Exception {
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle").accept(MediaType.APPLICATION_JSON);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "[{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3},"
-                + "{idVehicle:2,vehicleOwner:1,vehicleLicenseplate:\"RMN741\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2020,vehicleColor:\"Rojo\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}]";
+        String expected = "[{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"1998-05-07\",hasCreditCard: false},"
+                + "{idExample:2,name:\"Cesar Pineda\",city:\"Bogota\",birthday:\"1999-09-11\",hasCreditCard: true}]";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
@@ -77,10 +75,9 @@ public class VehicleControllerIntegration {
     @Test
     @Sql("/test-postgres.sql")
     public void testFindById() throws Exception {
-
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle/1").accept(MediaType.APPLICATION_JSON);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}";
+        String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Bogota\",birthday:\"1998-05-07\",hasCreditCard: false}";
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
@@ -90,9 +87,9 @@ public class VehicleControllerIntegration {
     @Test
     @Sql("/drop-tables.sql")
     public void testCreate() throws Exception {
-        String exampleJson = "{\"vehicleOwner\":1,\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2,\"vehicleModel\":\"Sedan\",\"vehicleYear\":2010,\"vehicleColor\":\"Azul\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
+        String exampleJson = "{\"name\":\"Sebastian Reina\",\"city\":\"Cali\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/vehicle").with(csrf())
+                .post("/example").with(csrf())
                 .accept(MediaType.APPLICATION_JSON)
                 .content(exampleJson)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -107,10 +104,10 @@ public class VehicleControllerIntegration {
     @Test
     @Sql("/test-postgres.sql")
     public void testUpdate() throws Exception {
-        String exampleJson = "{\"idVehicle\":1,\"vehicleOwner\":1,\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2,\"vehicleModel\":\"Camioneta\",\"vehicleYear\":2010,\"vehicleColor\":\"Amarillo\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
-        String expected = "{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Camioneta\",vehicleYear:2010,vehicleColor:\"Amarillo\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}";
+        String exampleJson = "{\"idExample\":1,\"name\":\"Gonzalo Diaz\",\"city\":\"Berlin\",\"birthday\":\"2020-09-30\",\"hasCreditCard\": true}";
+        String expected = "{idExample:1,name:\"Gonzalo Diaz\",city:\"Berlin\",birthday:\"2020-09-30\",hasCreditCard: true}";
         RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/vehicle").with(csrf())
+                .post("/example").with(csrf())
                 .accept(MediaType.APPLICATION_JSON)
                 .content(exampleJson)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -126,7 +123,7 @@ public class VehicleControllerIntegration {
     @Test
     @Sql("/test-postgres.sql")
     public void testDeleteById() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle/1").accept(MediaType.APPLICATION_JSON);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/example/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
     }
