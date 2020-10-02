@@ -17,6 +17,11 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <sonar.projectKey>Ingesoft-II_Backend</sonar.projectKey>
+        <sonar.organization>ingesoft-ii</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>63d85fcfaf06b2f0f9e69f7fa09bd1676e9f073e</sonar.login>
+
     </properties>
 
     <dependencies>
@@ -63,6 +68,24 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <version>2.3.3.RELEASE</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -72,6 +95,22 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.3.0.603</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sonar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <goalPrefix>sonar</goalPrefix>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

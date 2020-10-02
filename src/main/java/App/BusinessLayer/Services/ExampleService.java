@@ -21,8 +21,8 @@ public class ExampleService {
         return exampleRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public ExampleModel save(ExampleModel touristModel){
-        return exampleRepository.save(touristModel);
+    public ExampleModel save(ExampleModel exampleModel){
+        return exampleRepository.save(exampleModel);
     }
 
     public void deleteById(int id){
