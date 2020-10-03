@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "Usuario")
+@Table(name = "users")
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -35,7 +36,7 @@ public class UserModel {
 
     }
 
-    public UserModel(String name, String document,String phone,String userUniversity,String mail,String address,String password, LocalDate registryDatatime, String Rh) {
+    public UserModel(String name, String document,String phone,String userUniversity,String mail,String address,String password, LocalDateTime registryDatatime, String Rh) {
         this.name = name;
         this.document = document;
         this.phone = phone;
@@ -67,8 +68,9 @@ public class UserModel {
     
   
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate registryDatatime;
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
+    
+    private LocalDateTime registryDatatime;
 
     private String Rh;
 
