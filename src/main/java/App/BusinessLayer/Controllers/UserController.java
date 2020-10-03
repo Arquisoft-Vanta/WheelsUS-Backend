@@ -20,7 +20,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 @RestController
 // RequestMapping atiende las peticiones en la ruta dada por parametro
-@RequestMapping("/Usuario")
+@RequestMapping("/api/users")
 // CrossOrigin permite el acceso desde paginas web diferentes a localhost
 // Por ser entorno de pruebas se le da acceso a cualquier pagina web externa
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
