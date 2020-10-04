@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -61,6 +62,8 @@ public class VehicleModel{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idVehicle;
     
+
+    //@Column(name = "abc")
     private int vehicleOwner;
     
     private String vehicleLicenseplate;
