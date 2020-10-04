@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 import java.sql.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -108,4 +110,7 @@ public class VehicleModel{
     
     private String vehicleGasType;
     
+    @ManyToOne
+    @JoinColumn( name = "id_user" )
+    private UserModel userModel;
 }
