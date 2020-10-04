@@ -5,11 +5,8 @@
  */
 package App.BusinessLayer.Controllers;
 
-import App.BusinessLayer.Services.ExampleService;
 import App.BusinessLayer.Services.VehicleService;
-import App.DataLayer.Models.ExampleModel;
 import App.DataLayer.Models.VehicleModel;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

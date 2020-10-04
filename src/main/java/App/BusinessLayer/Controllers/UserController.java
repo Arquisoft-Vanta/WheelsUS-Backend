@@ -6,7 +6,6 @@
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.UserService;
-import App.DataLayer.Models.ExampleModel;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
 import java.util.List;

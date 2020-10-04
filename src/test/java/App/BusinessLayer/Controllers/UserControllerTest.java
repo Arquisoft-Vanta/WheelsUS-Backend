@@ -12,7 +12,6 @@ package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Services.VehicleService;
-import App.DataLayer.Models.ExampleModel;
 import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 import java.time.LocalDate;
