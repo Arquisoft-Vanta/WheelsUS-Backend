@@ -18,7 +18,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "Vehicle")
+@Table(name = "vehicle")
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -32,6 +32,20 @@ public class VehicleModel{
     
     public VehicleModel(int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity){
     
+        this.vehicleOwner = vehicleOwner;
+        this.vehicleLicenseplate = vehicleLicenseplate;
+        this.vehicleType = vehicleType;
+        this.vehicleModel = vehicleModel;
+        this.vehicleYear = vehicleYear;
+        this.vehicleColor = vehicleColor;
+        this.vehicleRegistryDatetime = vehicleRegistryDatetime;
+        this.vehiclePicture = vehiclePicture;
+        this.vehicleCapacity = vehicleCapacity;
+        
+    }
+    
+    public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity){
+        this.idVehicle = idVehicle;
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
         this.vehicleType = vehicleType;
