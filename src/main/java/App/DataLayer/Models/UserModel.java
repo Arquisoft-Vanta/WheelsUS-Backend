@@ -7,10 +7,8 @@ package App.DataLayer.Models;
  */
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +23,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "users")
+@Table(name = "`user`")
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -36,15 +34,15 @@ public class UserModel {
 
     }
 
-    public UserModel(String name, String document,String phone,String userUniversity,String mail,String address,String password, LocalDateTime registryDatatime, String Rh) {
-        this.name = name;
-        this.document = document;
-        this.phone = phone;
-        this.userUniversity =userUniversity;
-        this.mail = mail;
-        this.address = address;
+    public UserModel(String userName, String userDoc, String userPhone, int universityId, String userMail, String userAddress, String password, LocalDateTime registryDatetime, String Rh) {
+        this.userName = userName;
+        this.userDoc = userDoc;
+        this.userPhone = userPhone;
+        this.universityId = universityId;
+        this.userMail = userMail;
+        this.userAddress = userAddress;
         this.password = password;
-        this.registryDatatime  = registryDatatime;
+        this.registryDatetime  = registryDatetime;
         this.Rh = Rh;
     }
 
@@ -52,25 +50,24 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
 
-    private String name;
+    private String userName;
 
-    private String document;
+    private String userDoc;
     
-    private String phone;
+    private String userPhone;
     
-    private String userUniversity;
+    private int universityId;
     
-    private String mail;
+    private String userMail;
     
-    private String address;
+    private String userAddress;
     
-    private String password;
-    
-  
+    private String password;  
 
     @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
+    private LocalDateTime registryDatetime;
     
-    private LocalDateTime registryDatatime;
+    private String picture;
 
     private String Rh;
 
