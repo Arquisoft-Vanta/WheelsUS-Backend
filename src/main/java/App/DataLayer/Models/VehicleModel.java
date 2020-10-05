@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
+import java.sql.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -30,7 +33,7 @@ public class VehicleModel{
 
     }
     
-    public VehicleModel(int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity){
+    public VehicleModel(int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
     
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
@@ -41,10 +44,16 @@ public class VehicleModel{
         this.vehicleRegistryDatetime = vehicleRegistryDatetime;
         this.vehiclePicture = vehiclePicture;
         this.vehicleCapacity = vehicleCapacity;
+        this.vehicleBrand = vehicleBrand;
+        this.vehicleServiceType = vehicleServiceType;
+        this.vehicleBody = vehicleBody;
+        this.vehicleSoatExpiration = vehicleSoatExpiration;
+        this.vehicleEngine = vehicleEngine;
+        this.vehicleGasType = vehicleGasType;
         
     }
     
-    public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity){
+    public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
         this.idVehicle = idVehicle;
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
@@ -55,6 +64,12 @@ public class VehicleModel{
         this.vehicleRegistryDatetime = vehicleRegistryDatetime;
         this.vehiclePicture = vehiclePicture;
         this.vehicleCapacity = vehicleCapacity;
+        this.vehicleBrand = vehicleBrand;
+        this.vehicleServiceType = vehicleServiceType;
+        this.vehicleBody = vehicleBody;
+        this.vehicleSoatExpiration = vehicleSoatExpiration;
+        this.vehicleEngine = vehicleEngine;
+        this.vehicleGasType = vehicleGasType;
         
     }
     
@@ -83,4 +98,19 @@ public class VehicleModel{
     
     private int vehicleCapacity;
     
+    private String vehicleBrand;
+    
+    private String vehicleServiceType;
+    
+    private String vehicleBody;
+    
+    private Date vehicleSoatExpiration;
+    
+    private int vehicleEngine;
+    
+    private String vehicleGasType;
+    
+    @ManyToOne
+    @JoinColumn( name = "id_user" )
+    private UserModel userModel;
 }
