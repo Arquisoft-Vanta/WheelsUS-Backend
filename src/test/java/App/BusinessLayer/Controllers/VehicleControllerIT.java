@@ -7,14 +7,18 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
@@ -66,9 +70,26 @@ public class VehicleControllerIT {
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "[{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3},"
-                + "{idVehicle:2,vehicleOwner:1,vehicleLicenseplate:\"RMN741\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2020,vehicleColor:\"Rojo\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}]";
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        String expected = "[{idVehicle:1,vehicleOwner:1," +
+                "vehicleLicenseplate:\"ABC123\",vehicleType:2," +
+                "vehicleModel:\"Sedan\",vehicleYear:2010," +
+                "vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30" +
+                "@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3," +
+                "vehicleBrand:\"Renault\",vehicleServiceType:\"Particular\"," +
+                "vehicleBody:\"Camioneta\"," +
+                "vehicleSoatExpiration:\"2021-10-05\",vehicleEngine:1000," +
+                "vehicleGasType:\"Diesel\"}," + "{idVehicle:2,vehicleOwner:1," +
+                "vehicleLicenseplate:\"RMN741\",vehicleType:2," +
+                "vehicleModel:\"Sedan\",vehicleYear:2020," +
+                "vehicleColor:\"Rojo\",vehicleRegistryDatetime:\"2020-09-30" +
+                "@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3," +
+                "vehicleBrand:\"Chevrolet\"," +
+                "vehicleServiceType:\"Particular\",vehicleBody:\"Camioneta\"," +
+                "vehicleSoatExpiration:\"2021-10-05\",vehicleEngine:1000," +
+                "vehicleGasType:\"Diesel\"}]";
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
     }
 
     /**
@@ -80,8 +101,18 @@ public class VehicleControllerIT {
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/vehicle/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Sedan\",vehicleYear:2010,vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}";
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        String expected = "{idVehicle:1,vehicleOwner:1," +
+                "vehicleLicenseplate:\"ABC123\",vehicleType:2," +
+                "vehicleModel:\"Sedan\",vehicleYear:2010," +
+                "vehicleColor:\"Azul\",vehicleRegistryDatetime:\"2020-09-30" +
+                "@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3," +
+                "vehicleBrand:\"Renault\",vehicleServiceType:\"Particular\"," +
+                "vehicleBody:\"Camioneta\"," +
+                "vehicleSoatExpiration:\"2021-10-05\",vehicleEngine:1000," +
+                "vehicleGasType:\"Diesel\"}";
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
     }
 
     /**
@@ -90,14 +121,16 @@ public class VehicleControllerIT {
     @Test
     @Sql("/drop-tables.sql")
     public void testCreate() throws Exception {
-        String exampleJson = "{\"vehicleOwner\":1,\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2,\"vehicleModel\":\"Sedan\",\"vehicleYear\":2010,\"vehicleColor\":\"Azul\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
-        RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/vehicle").with(csrf())
-                .accept(MediaType.APPLICATION_JSON)
-                .content(exampleJson)
-                .contentType(MediaType.APPLICATION_JSON);
+        String exampleJson = "{\"vehicleOwner\":1," +
+                "\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2," +
+                "\"vehicleModel\":\"Sedan\",\"vehicleYear\":2010," +
+                "\"vehicleColor\":\"Azul\"," +
+                "\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\"," +
+                "\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/vehicle").with(csrf()).accept(MediaType.APPLICATION_JSON).content(exampleJson).contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
+        assertEquals(HttpStatus.CREATED.value(),
+                     result.getResponse().getStatus());
 
     }
 
@@ -107,16 +140,25 @@ public class VehicleControllerIT {
     @Test
     @Sql("/test-postgres.sql")
     public void testUpdate() throws Exception {
-        String exampleJson = "{\"idVehicle\":1,\"vehicleOwner\":1,\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2,\"vehicleModel\":\"Camioneta\",\"vehicleYear\":2010,\"vehicleColor\":\"Amarillo\",\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\",\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
-        String expected = "{idVehicle:1,vehicleOwner:1,vehicleLicenseplate:\"ABC123\",vehicleType:2,vehicleModel:\"Camioneta\",vehicleYear:2010,vehicleColor:\"Amarillo\",vehicleRegistryDatetime:\"2020-09-30@10:11:30\",vehiclePicture:\"imagen\",vehicleCapacity:3}";
-        RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/vehicle").with(csrf())
-                .accept(MediaType.APPLICATION_JSON)
-                .content(exampleJson)
-                .contentType(MediaType.APPLICATION_JSON);
+        String exampleJson = "{\"idVehicle\":1,\"vehicleOwner\":1," +
+                "\"vehicleLicenseplate\":\"ABC123\",\"vehicleType\":2," +
+                "\"vehicleModel\":\"Camioneta\",\"vehicleYear\":2010," +
+                "\"vehicleColor\":\"Amarillo\"," +
+                "\"vehicleRegistryDatetime\":\"2020-09-30@10:11:30\"," +
+                "\"vehiclePicture\":\"imagen\",\"vehicleCapacity\":3}";
+        String expected = "{idVehicle:1,vehicleOwner:1," +
+                "vehicleLicenseplate:\"ABC123\",vehicleType:2," +
+                "vehicleModel:\"Camioneta\",vehicleYear:2010," +
+                "vehicleColor:\"Amarillo\"," +
+                "vehicleRegistryDatetime:\"2020-09-30@10:11:30\"," +
+                "vehiclePicture:\"imagen\",vehicleCapacity:3}";
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/vehicle").with(csrf()).accept(MediaType.APPLICATION_JSON).content(exampleJson).contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        assertEquals(HttpStatus.CREATED.value(),
+                     result.getResponse().getStatus());
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
 
     }
 

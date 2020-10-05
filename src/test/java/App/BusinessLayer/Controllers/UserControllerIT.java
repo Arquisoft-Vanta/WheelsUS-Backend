@@ -6,7 +6,6 @@
 package App.BusinessLayer.Controllers;
 
 /**
- *
  * @author crist
  */
 
@@ -16,14 +15,18 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
@@ -75,9 +78,18 @@ public class UserControllerIT {
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/users").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "[{idUser:1,name:\"Cristian\",document:\"123456789\",phone:\"7777\",userUniversity:\"U nacional\",mail:\"cesaineam\",address:\"en bogota\",password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30\",rh:\"0-\"},"
-                + "{idUser:2,name:\"Esteban\",document:\"987654321\",phone:\"9999\",userUniversity:\"U nacional\",mail:\"cesteban\",address:\"en bogota1\",password:\"el pass1\",registryDatatime:\"2020-09-30@10:11:50\",rh:\"0+\"}]";
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        String expected = "[{idUser:1,name:\"Cristian\"," +
+                "document:\"123456789\",phone:\"7777\",userUniversity:\"U " +
+                "nacional\",mail:\"cesaineam\",address:\"en bogota\"," +
+                "password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30" +
+                "\",rh:\"0-\"}," + "{idUser:2,name:\"Esteban\"," +
+                "document:\"987654321\",phone:\"9999\",userUniversity:\"U " +
+                "nacional\",mail:\"cesteban\",address:\"en bogota1\"," +
+                "password:\"el pass1\",registryDatatime:\"2020-09-30@10:11:50" +
+                "\",rh:\"0+\"}]";
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
     }
 
     /**
@@ -89,8 +101,14 @@ public class UserControllerIT {
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/users/1").accept(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        String expected = "{idUser:1,name:\"Cristian\",document:\"123456789\",phone:\"7777\",userUniversity:\"U nacional\",mail:\"cesaineam\",address:\"en bogota\",password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30\",rh:\"0-\"}";
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        String expected = "{idUser:1,name:\"Cristian\"," +
+                "document:\"123456789\",phone:\"7777\",userUniversity:\"U " +
+                "nacional\",mail:\"cesaineam\",address:\"en bogota\"," +
+                "password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30" +
+                "\",rh:\"0-\"}";
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
     }
 
     /**
@@ -99,14 +117,15 @@ public class UserControllerIT {
     @Test
     @Sql("/drop-tables.sql")
     public void testCreate() throws Exception {
-        String exampleJson = "{\"name\":\"Cristian\",\"document\":\"123456789\",\"phone\":\"7777\",\"userUniversity\":\"U nacional\",\"mail\":\"cesaineam\",\"address\":\"en bogota\",\"password\":\"el pass\",\"registryDatatime\":\"2020-09-30@10:11:30\",\"rh\":\"0-\"}";
-        RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/users").with(csrf())
-                .accept(MediaType.APPLICATION_JSON)
-                .content(exampleJson)
-                .contentType(MediaType.APPLICATION_JSON);
+        String exampleJson = "{\"name\":\"Cristian\"," +
+                "\"document\":\"123456789\",\"phone\":\"7777\"," +
+                "\"userUniversity\":\"U nacional\",\"mail\":\"cesaineam\"," +
+                "\"address\":\"en bogota\",\"password\":\"el pass\"," +
+                "\"registryDatatime\":\"2020-09-30@10:11:30\",\"rh\":\"0-\"}";
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/users").with(csrf()).accept(MediaType.APPLICATION_JSON).content(exampleJson).contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
+        assertEquals(HttpStatus.CREATED.value(),
+                     result.getResponse().getStatus());
 
     }
 
@@ -116,16 +135,23 @@ public class UserControllerIT {
     @Test
     @Sql("/test-postgres.sql")
     public void testUpdate() throws Exception {
-        String exampleJson = "{\"idUser\":1,\"name\":\"Cristian\",\"document\":\"123456789\",\"phone\":\"7777\",\"userUniversity\":\"U nacional\",\"mail\":\"cesaineam\",\"address\":\"en bogota\",\"password\":\"el pass\",\"registryDatatime\":\"2020-09-30@10:11:30\",\"rh\":\"0-\"}";
-        String expected = "{idUser:1,name:\"Cristian\",document:\"123456789\",phone:\"7777\",userUniversity:\"U nacional\",mail:\"cesaineam\",address:\"en bogota\",password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30\",rh:\"0-\"}";
-        RequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/api/users").with(csrf())
-                .accept(MediaType.APPLICATION_JSON)
-                .content(exampleJson)
-                .contentType(MediaType.APPLICATION_JSON);
+        String exampleJson = "{\"idUser\":1,\"name\":\"Cristian\"," +
+                "\"document\":\"123456789\",\"phone\":\"7777\"," +
+                "\"userUniversity\":\"U nacional\",\"mail\":\"cesaineam\"," +
+                "\"address\":\"en bogota\",\"password\":\"el pass\"," +
+                "\"registryDatatime\":\"2020-09-30@10:11:30\",\"rh\":\"0-\"}";
+        String expected = "{idUser:1,name:\"Cristian\"," +
+                "document:\"123456789\",phone:\"7777\",userUniversity:\"U " +
+                "nacional\",mail:\"cesaineam\",address:\"en bogota\"," +
+                "password:\"el pass\",registryDatatime:\"2020-09-30@10:11:30" +
+                "\",rh:\"0-\"}";
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/users").with(csrf()).accept(MediaType.APPLICATION_JSON).content(exampleJson).contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        assertEquals(HttpStatus.CREATED.value(), result.getResponse().getStatus());
-        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+        assertEquals(HttpStatus.CREATED.value(),
+                     result.getResponse().getStatus());
+        JSONAssert.assertEquals(expected,
+                                result.getResponse().getContentAsString(),
+                                false);
 
     }
 
@@ -139,5 +165,5 @@ public class UserControllerIT {
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
     }
-    
+
 }
