@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.UserService;
@@ -15,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 @RestController
@@ -26,6 +23,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 
 public class UserController {
+    
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
 
@@ -44,8 +43,10 @@ public class UserController {
         try {
             return ResponseEntity.ok(userService.findById(id));
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         }
@@ -56,8 +57,10 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserModel> create(@RequestBody UserModel userModel) {
         try {
+            logger.trace(HttpStatus.CREATED.toString());
             return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userModel));
         } catch (Exception e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
@@ -69,11 +72,14 @@ public class UserController {
             // Busqueda de prueba para saber si el registro ya existe
             UserModel usuarioModel1
                     = userService.findById(userModel.getIdUser());
+            logger.error(HttpStatus.CREATED.toString());
             return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userModel));
 
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         }
@@ -85,10 +91,13 @@ public class UserController {
 
         try {
             userService.deleteById(id);
+            logger.trace(HttpStatus.OK.toString());
             return ResponseEntity.status(HttpStatus.OK).body(null);
         } catch (EmptyResultDataAccessException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 

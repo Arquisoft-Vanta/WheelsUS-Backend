@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author cesar
@@ -33,6 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 
 public class VehicleController {
+    
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
@@ -52,8 +57,10 @@ public class VehicleController {
         try {
             return ResponseEntity.ok(vehicleService.findById(id));
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         }
@@ -64,8 +71,10 @@ public class VehicleController {
     @PostMapping
     public ResponseEntity<VehicleModel> create(@RequestBody VehicleModel vehicleModel) {
         try {
+            logger.trace(HttpStatus.CREATED.toString());
             return ResponseEntity.status(HttpStatus.CREATED).body(vehicleService.save(vehicleModel));
         } catch (Exception e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
@@ -76,11 +85,14 @@ public class VehicleController {
         try {
             // Busqueda de prueba para saber si el registro ya existe
             VehicleModel vehicleModell = vehicleService.findById(vehicleModel.getIdVehicle());
+            logger.trace(HttpStatus.CREATED.toString());
             return ResponseEntity.status(HttpStatus.CREATED).body(vehicleService.save(vehicleModel));
 
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         }
@@ -92,10 +104,13 @@ public class VehicleController {
 
         try {
             vehicleService.deleteById(id);
+            logger.trace(HttpStatus.OK.toString());
             return ResponseEntity.status(HttpStatus.OK).body(null);
         } catch (EmptyResultDataAccessException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 

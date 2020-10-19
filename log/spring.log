@@ -1,0 +1,252 @@
+2020-10-19 04:18:33.006  INFO 23852 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 23852 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:18:33.006 DEBUG 23852 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:18:33.006  INFO 23852 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:18:33.690  INFO 23852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:18:33.759  INFO 23852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61ms. Found 3 JPA repository interfaces.
+2020-10-19 04:18:34.824  INFO 23852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:18:34.840  INFO 23852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:18:34.840  INFO 23852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:18:34.940  INFO 23852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:18:34.940  INFO 23852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1872 ms
+2020-10-19 04:18:35.078  INFO 23852 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:18:35.266  INFO 23852 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:18:35.314  INFO 23852 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.026s)
+2020-10-19 04:18:35.316  INFO 23852 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:18:35.316  INFO 23852 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:18:35.407  INFO 23852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:18:35.458  INFO 23852 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:18:35.582  WARN 23852 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:18:35.614  INFO 23852 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:18:35.799  INFO 23852 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:18:35.914  INFO 23852 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:18:35.984  INFO 23852 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:18:35.999  WARN 23852 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2020-10-19 04:18:35.999  INFO 23852 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:18:35.999  INFO 23852 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:18:36.734  INFO 23852 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:18:36.750  INFO 23852 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:18:36.750  INFO 23852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:18:36.750  INFO 23852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-19 04:18:36.797  INFO 23852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-19 04:18:36.797  INFO 23852 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-10-19 04:18:36.803  INFO 23852 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-10-19 04:18:36.803 ERROR 23852 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-10-19 04:20:25.251  INFO 30936 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 30936 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:20:25.267 DEBUG 30936 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:20:25.267  INFO 30936 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:20:25.784  INFO 30936 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:20:25.837  INFO 30936 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45ms. Found 3 JPA repository interfaces.
+2020-10-19 04:20:26.731  INFO 30936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:20:26.746  INFO 30936 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:20:26.746  INFO 30936 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:20:26.862  INFO 30936 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:20:26.862  INFO 30936 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1557 ms
+2020-10-19 04:20:26.978  INFO 30936 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:20:27.094  INFO 30936 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:20:27.139  INFO 30936 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.023s)
+2020-10-19 04:20:27.149  INFO 30936 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:20:27.149  INFO 30936 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:20:27.230  INFO 30936 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:20:27.271  INFO 30936 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:20:27.392  WARN 30936 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:20:27.400  INFO 30936 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:20:27.543  INFO 30936 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:20:27.634  INFO 30936 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:20:27.705  WARN 30936 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2020-10-19 04:20:27.705  INFO 30936 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:20:27.796  INFO 30936 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:20:27.816  INFO 30936 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:20:28.465  INFO 30936 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:20:28.480  INFO 30936 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:20:28.480  INFO 30936 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:20:28.480  INFO 30936 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-19 04:20:28.527  INFO 30936 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-19 04:20:28.527  INFO 30936 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-10-19 04:20:28.543  INFO 30936 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-10-19 04:20:28.543 ERROR 30936 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-10-19 04:20:48.893  INFO 26556 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 26556 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:20:48.893 DEBUG 26556 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:20:48.893  INFO 26556 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:20:49.410  INFO 26556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:20:49.457  INFO 26556 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43ms. Found 3 JPA repository interfaces.
+2020-10-19 04:20:50.375  INFO 26556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:20:50.381  INFO 26556 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:20:50.381  INFO 26556 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:20:50.497  INFO 26556 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:20:50.497  INFO 26556 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1558 ms
+2020-10-19 04:20:50.629  INFO 26556 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:20:50.745  INFO 26556 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:20:50.783  INFO 26556 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.020s)
+2020-10-19 04:20:50.783  INFO 26556 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:20:50.783  INFO 26556 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:20:50.861  INFO 26556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:20:50.899  INFO 26556 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:20:50.983  WARN 26556 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:20:50.999  INFO 26556 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:20:51.126  INFO 26556 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:20:51.217  INFO 26556 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:20:51.268  INFO 26556 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:20:51.268  WARN 26556 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2020-10-19 04:20:51.268  INFO 26556 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:20:51.288  INFO 26556 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:20:51.968  INFO 26556 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:20:51.984  INFO 26556 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:20:51.984  INFO 26556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:20:51.984  INFO 26556 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-19 04:20:51.984  INFO 26556 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-19 04:20:51.984  INFO 26556 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-10-19 04:20:52.000  INFO 26556 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-10-19 04:20:52.000 ERROR 26556 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-10-19 04:21:07.233  INFO 18116 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 18116 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:21:07.233 DEBUG 18116 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:21:07.233  INFO 18116 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:21:07.803  INFO 18116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:21:07.865  INFO 18116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48ms. Found 3 JPA repository interfaces.
+2020-10-19 04:21:08.818  INFO 18116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:21:08.818  INFO 18116 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:21:08.818  INFO 18116 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:21:08.934  INFO 18116 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:21:08.934  INFO 18116 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1670 ms
+2020-10-19 04:21:09.065  INFO 18116 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:21:09.212  INFO 18116 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:21:09.250  INFO 18116 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.021s)
+2020-10-19 04:21:09.252  INFO 18116 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:21:09.252  INFO 18116 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:21:09.333  INFO 18116 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:21:09.371  INFO 18116 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:21:09.478  WARN 18116 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:21:09.493  INFO 18116 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:21:09.625  INFO 18116 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:21:09.745  INFO 18116 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:21:09.807  INFO 18116 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:21:09.827  INFO 18116 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:21:09.846  INFO 18116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-19 04:21:09.848  INFO 18116 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-10-19 04:21:10.629  INFO 18116 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:21:10.645  INFO 18116 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:21:10.846  INFO 18116 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-10-19 04:21:10.846  INFO 18116 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 3.984 seconds (JVM running for 4.373)
+2020-10-19 04:23:44.207  INFO 30680 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 30680 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:23:44.207 DEBUG 30680 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:23:44.207  INFO 30680 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:23:44.833  INFO 30680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:23:44.898  INFO 30680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56ms. Found 3 JPA repository interfaces.
+2020-10-19 04:23:45.892  INFO 30680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:23:45.892  INFO 30680 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:23:45.908  INFO 30680 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:23:46.024  INFO 30680 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:23:46.024  INFO 30680 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1770 ms
+2020-10-19 04:23:46.161  INFO 30680 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:23:46.278  INFO 30680 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:23:46.328  INFO 30680 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.021s)
+2020-10-19 04:23:46.334  INFO 30680 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:23:46.335  INFO 30680 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:23:46.430  INFO 30680 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:23:46.475  INFO 30680 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:23:46.609  WARN 30680 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:23:46.621  INFO 30680 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:23:46.789  INFO 30680 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:23:46.914  INFO 30680 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:23:46.996  INFO 30680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-19 04:23:46.998  INFO 30680 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-10-19 04:23:47.067  INFO 30680 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:23:47.083  INFO 30680 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:23:47.825  INFO 30680 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:23:47.841  INFO 30680 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:23:48.048  INFO 30680 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-10-19 04:23:48.064  INFO 30680 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 4.208 seconds (JVM running for 4.635)
+2020-10-19 04:23:50.402  INFO 30680 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-19 04:23:50.402  INFO 30680 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-10-19 04:23:50.410  INFO 30680 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-10-19 04:23:50.539 TRACE 30680 --- [http-nio-8080-exec-2] A.B.Controllers.UserController           : 201 CREATED
+2020-10-19 04:24:20.632  WARN 30680 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'FEAIOFJEAI': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'FEAIOFJEAI': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (PushbackInputStream); line: 5, column: 36]]
+2020-10-19 04:26:10.754  WARN 30680 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `int` from String "FEAIOFJEAI": not a valid Integer value; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `int` from String "FEAIOFJEAI": not a valid Integer value
+ at [Source: (PushbackInputStream); line: 5, column: 25] (through reference chain: App.DataLayer.Models.UserModel["universityId"])]
+2020-10-19 04:34:27.836  INFO 31260 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 31260 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-10-19 04:34:27.836 DEBUG 31260 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-10-19 04:34:27.836  INFO 31260 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-10-19 04:34:28.353  INFO 31260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-10-19 04:34:28.400  INFO 31260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 3 JPA repository interfaces.
+2020-10-19 04:34:29.348  INFO 31260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-19 04:34:29.363  INFO 31260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-19 04:34:29.363  INFO 31260 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-10-19 04:34:29.499  INFO 31260 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-19 04:34:29.499  INFO 31260 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1632 ms
+2020-10-19 04:34:29.641  INFO 31260 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-10-19 04:34:29.851  INFO 31260 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-10-19 04:34:29.898  INFO 31260 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.021s)
+2020-10-19 04:34:29.898  INFO 31260 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2020-10-19 04:34:29.898  INFO 31260 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-10-19 04:34:29.999  INFO 31260 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-19 04:34:30.036  INFO 31260 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-10-19 04:34:30.152  WARN 31260 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-10-19 04:34:30.152  INFO 31260 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-10-19 04:34:30.304  INFO 31260 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-10-19 04:34:30.426  INFO 31260 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-19 04:34:30.496  INFO 31260 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-19 04:34:30.517  INFO 31260 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-10-19 04:34:30.537  INFO 31260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-19 04:34:30.537  INFO 31260 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-10-19 04:34:31.333  INFO 31260 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-10-19 04:34:31.348  INFO 31260 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-10-19 04:34:31.549  INFO 31260 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-10-19 04:34:31.565  INFO 31260 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 4.077 seconds (JVM running for 4.471)
+2020-10-19 04:37:06.362  INFO 31260 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-19 04:37:06.362  INFO 31260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-10-19 04:37:06.370  INFO 31260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-10-19 04:37:06.473  WARN 31260 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `int` from String "FEAIOFJEAI": not a valid Integer value; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `int` from String "FEAIOFJEAI": not a valid Integer value
+ at [Source: (PushbackInputStream); line: 5, column: 25] (through reference chain: App.DataLayer.Models.UserModel["universityId"])]
+2020-10-19 04:37:11.968 TRACE 31260 --- [http-nio-8080-exec-4] A.B.Controllers.UserController           : 201 CREATED
+2020-10-19 04:37:26.836 TRACE 31260 --- [http-nio-8080-exec-5] A.B.Controllers.UserController           : 201 CREATED
+2020-10-19 04:37:26.850  WARN 31260 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2020-10-19 04:37:26.850 ERROR 31260 --- [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: inserción o actualización en la tabla «ride» viola la llave foránea «fk_ride_vehicle_r_vehicle»
+  Detail: La llave (id_vehicle)=(23) no está presente en la tabla «vehicle».
+2020-10-19 04:37:26.856 ERROR 31260 --- [http-nio-8080-exec-5] A.B.Controllers.UserController           : 400 BAD_REQUEST
+2020-10-19 04:38:05.424 TRACE 31260 --- [http-nio-8080-exec-7] A.B.Controllers.UserController           : 201 CREATED
+2020-10-19 04:38:35.099 TRACE 31260 --- [http-nio-8080-exec-8] A.B.Controllers.UserController           : 201 CREATED
