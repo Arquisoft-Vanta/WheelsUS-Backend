@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -54,7 +56,7 @@ public class VehicleModel{
     }
     
     public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
-        this.idVehicle = idVehicle;
+        
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
         this.vehicleType = vehicleType;
@@ -76,9 +78,8 @@ public class VehicleModel{
     @Id // Primary key, con autoincremento
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idVehicle;
-    
-
-    //@Column(name = "abc")
+ 
+    @Column(name = "vehicle_owner")
     private int vehicleOwner;
     
     private String vehicleLicenseplate;
@@ -111,6 +112,9 @@ public class VehicleModel{
     private String vehicleGasType;
     
     @ManyToOne
-    @JoinColumn( name = "id_user" )
+    @JoinColumn( name = "vehicle_owner", insertable=false, updatable=false  )
     private UserModel userModel;
+    
+    @OneToMany( mappedBy = "idVehicle" )
+    private List<RideModel> rideModel;
 }
