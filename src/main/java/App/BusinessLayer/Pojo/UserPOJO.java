@@ -1,9 +1,7 @@
 package App.BusinessLayer.Pojo;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import java.time.LocalDateTime;
 

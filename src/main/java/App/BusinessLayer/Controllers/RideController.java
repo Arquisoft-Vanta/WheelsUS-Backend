@@ -1,7 +1,6 @@
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Pojo.RidePOJO;
-import App.BusinessLayer.Pojo.UserPOJO;
 import App.BusinessLayer.Services.RideService;
 import App.DataLayer.Models.RideModel;
 
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
-import App.DataLayer.Models.UserModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

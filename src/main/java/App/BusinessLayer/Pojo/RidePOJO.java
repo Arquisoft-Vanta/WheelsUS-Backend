@@ -1,8 +1,5 @@
 package App.BusinessLayer.Pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 public class RidePOJO {

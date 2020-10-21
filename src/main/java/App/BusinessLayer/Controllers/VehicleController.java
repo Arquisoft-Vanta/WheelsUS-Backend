@@ -1,9 +1,7 @@
 package App.BusinessLayer.Controllers;
 
-import App.BusinessLayer.Pojo.UserPOJO;
 import App.BusinessLayer.Pojo.VehiclePOJO;
 import App.BusinessLayer.Services.VehicleService;
-import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 
 import java.util.ArrayList;
