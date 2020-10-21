@@ -30,7 +30,9 @@ public class UserService {
     public UserModel save(UserModel touristModel){
         return userRepository.save(touristModel);
     }
-
+    public UserModel findByUserName( String username ){
+        return userRepository.findByUserName( username );
+    }
     public void deleteById(int id){
         userRepository.deleteById(id);
     }

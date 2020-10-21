@@ -1,6 +1,9 @@
 package App.BusinessLayer.Pojo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -21,11 +24,31 @@ public class UserPOJO {
 
     private String password;
 
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
     private LocalDateTime registryDatetime;
 
     private String picture;
 
     private String Rh;
+
+    public UserPOJO(String userName, String userDoc, String userPhone,
+                    int universityId, String userMail, String userAddress,
+                    String password,  LocalDateTime registryDatetime,
+                     String rh) {
+        this.userName = userName;
+        this.userDoc = userDoc;
+        this.userPhone = userPhone;
+        this.universityId = universityId;
+        this.userMail = userMail;
+        this.userAddress = userAddress;
+        this.password = password;
+        this.registryDatetime = registryDatetime;
+        this.picture = picture;
+        Rh = rh;
+    }
+
+    public UserPOJO() {
+    }
 
     public int getIdUser() {
         return idUser;
