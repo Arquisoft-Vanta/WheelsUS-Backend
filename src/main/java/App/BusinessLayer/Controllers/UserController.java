@@ -109,12 +109,9 @@ public class UserController {
     // PostMapping hace una peticion post a la ruta del controlador
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
-        userService.save(fillModel(userPOJO));
-        return new ResponseEntity<>(HttpStatus.CREATED);
-        
+
         try {
             logger.trace(HttpStatus.CREATED.toString());
-            UserPOJO userPOJO = fillPOJO(userModel);
             userService.save(fillModel(userPOJO));
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
