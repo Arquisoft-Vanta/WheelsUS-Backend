@@ -1,9 +1,15 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.UserPOJO;
+import App.BusinessLayer.Pojo.VehiclePOJO;
 import App.BusinessLayer.Services.VehicleService;
+import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParseException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,7 +30,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * @author cesar
  */
 
@@ -33,35 +38,81 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/vehicle")
 // CrossOrigin permite el acceso desde paginas web diferentes a localhost
 // Por ser entorno de pruebas se le da acceso a cualquier pagina web externa
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,
+        RequestMethod.DELETE, RequestMethod.PUT})
 
 public class VehicleController {
-    
+
     Logger logger = LoggerFactory.getLogger(UserController.class);
-    
+
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
 
     @Autowired
     private VehicleService vehicleService;
 
+    public VehicleModel fillModel(VehiclePOJO vehiclePOJO) {
+        VehicleModel vehicle = new VehicleModel();
+        vehicle.setVehicleOwner(vehiclePOJO.getVehicleOwner());
+        vehicle.setVehicleLicenseplate(vehiclePOJO.getVehicleLicenseplate());
+        vehicle.setVehicleType(vehiclePOJO.getVehicleType());
+        vehicle.setVehicleModel(vehiclePOJO.getVehicleModel());
+        vehicle.setVehicleYear(vehiclePOJO.getVehicleYear());
+        vehicle.setVehicleColor(vehiclePOJO.getVehicleColor());
+        vehicle.setVehicleRegistryDatetime(vehiclePOJO.getVehicleRegistryDatetime());
+        vehicle.setVehiclePicture(vehiclePOJO.getVehiclePicture());
+        vehicle.setVehicleCapacity(vehiclePOJO.getVehicleCapacity());
+        vehicle.setVehicleBrand(vehiclePOJO.getVehicleBrand());
+        vehicle.setVehicleServiceType(vehiclePOJO.getVehicleServiceType());
+        vehicle.setVehicleBody(vehiclePOJO.getVehicleBody());
+        vehicle.setVehicleSoatExpiration(vehiclePOJO.getVehicleSoatExpiration());
+        vehicle.setVehicleEngine(vehiclePOJO.getVehicleEngine());
+        vehicle.setVehicleGasType(vehiclePOJO.getVehicleGasType());
+        return vehicle;
+    }
+
+    public VehiclePOJO fillPojo(VehicleModel vehicleModel) {
+        VehiclePOJO vehicle = new VehiclePOJO();
+        vehicle.setVehicleOwner(vehicleModel.getVehicleOwner());
+        vehicle.setVehicleLicenseplate(vehicleModel.getVehicleLicenseplate());
+        vehicle.setVehicleType(vehicleModel.getVehicleType());
+        vehicle.setVehicleModel(vehicleModel.getVehicleModel());
+        vehicle.setVehicleYear(vehicleModel.getVehicleYear());
+        vehicle.setVehicleColor(vehicleModel.getVehicleColor());
+        vehicle.setVehicleRegistryDatetime(vehicleModel.getVehicleRegistryDatetime());
+        vehicle.setVehiclePicture(vehicleModel.getVehiclePicture());
+        vehicle.setVehicleCapacity(vehicleModel.getVehicleCapacity());
+        vehicle.setVehicleBrand(vehicleModel.getVehicleBrand());
+        vehicle.setVehicleServiceType(vehicleModel.getVehicleServiceType());
+        vehicle.setVehicleBody(vehicleModel.getVehicleBody());
+        vehicle.setVehicleSoatExpiration(vehicleModel.getVehicleSoatExpiration());
+        vehicle.setVehicleEngine(vehicleModel.getVehicleEngine());
+        vehicle.setVehicleGasType(vehicleModel.getVehicleGasType());
+        return vehicle;
+    }
+
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping
-    public List<VehicleModel> findAll() {
-        return vehicleService.findAll();
+    public List<VehiclePOJO> findAll() {
+        List<VehiclePOJO> vehiclePOJOS = new ArrayList<>();
+        List<VehicleModel> vehicleModels = vehicleService.findAll();
+        for (VehicleModel vehicleModel : vehicleModels) {
+            vehiclePOJOS.add(fillPojo(vehicleModel));
+        }
+        return vehiclePOJOS;
     }
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping("/{id}")
-    public ResponseEntity<VehicleModel> findById(@PathVariable int id) {
+    public ResponseEntity<VehiclePOJO> findById(@PathVariable int id) {
         try {
-            return ResponseEntity.ok(vehicleService.findById(id));
+            return ResponseEntity.ok(fillPojo(vehicleService.findById(id)));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
 
@@ -69,31 +120,33 @@ public class VehicleController {
 
     // PostMapping hace una peticion post a la ruta del controlador
     @PostMapping
-    public ResponseEntity<VehicleModel> create(@RequestBody VehicleModel vehicleModel) {
+    public ResponseEntity<Void> create(@RequestBody VehiclePOJO vehiclePOJO) {
         try {
+            vehicleService.save(fillModel(vehiclePOJO));
             logger.trace(HttpStatus.CREATED.toString());
-            return ResponseEntity.status(HttpStatus.CREATED).body(vehicleService.save(vehicleModel));
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     // PutMapping hace una peticion put a la ruta del controlador
     @PutMapping("/{id}")
-    public ResponseEntity<VehicleModel> update(@RequestBody VehicleModel vehicleModel) {
+    public ResponseEntity<Void> update(@RequestBody VehiclePOJO vehiclePOJO) {
         try {
             // Busqueda de prueba para saber si el registro ya existe
-            VehicleModel vehicleModell = vehicleService.findById(vehicleModel.getIdVehicle());
+            VehicleModel vehicleModell =
+                    vehicleService.findById(vehiclePOJO.getIdVehicle());
+            vehicleService.save(fillModel(vehiclePOJO));
             logger.trace(HttpStatus.CREATED.toString());
-            return ResponseEntity.status(HttpStatus.CREATED).body(vehicleService.save(vehicleModel));
-
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
     }
@@ -105,15 +158,15 @@ public class VehicleController {
         try {
             vehicleService.deleteById(id);
             logger.trace(HttpStatus.OK.toString());
-            return ResponseEntity.status(HttpStatus.OK).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
     }
-    
+
 }
