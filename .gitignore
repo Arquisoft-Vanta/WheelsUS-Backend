@@ -11,7 +11,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-log/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -31,3 +31,6 @@ build/
 ### VS Code ###
 .vscode/
 /nbproject/
+*.log
+!log/
+log/*

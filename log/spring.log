@@ -172,3 +172,4 @@ Migration checksum mismatch for migration version 4
 2020-10-21 09:11:33.482  INFO 22520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-10-21 09:11:33.572  INFO 22520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 90 ms
 2020-10-21 09:11:34.650 TRACE 22520 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 201 CREATED
+2020-10-21 09:20:57.164 TRACE 22520 --- [http-nio-8080-exec-5] A.B.Controllers.UserController           : 201 CREATED
