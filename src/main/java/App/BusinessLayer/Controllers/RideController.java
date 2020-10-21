@@ -1,9 +1,15 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.RidePOJO;
+import App.BusinessLayer.Pojo.UserPOJO;
 import App.BusinessLayer.Services.RideService;
 import App.DataLayer.Models.RideModel;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
+
+import App.DataLayer.Models.UserModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,23 +50,50 @@ public class RideController {
     @Autowired
     private RideService rideService;
 
+    public RideModel fillModel(RidePOJO ridePOJO){
+        RideModel ride = new RideModel();
+        ride.setIdVehicle(ridePOJO.getIdVehicle());
+        ride.setRideStartDatetime(ridePOJO.getRideStartDatetime());
+        ride.setRideEndDatetime(ridePOJO.getRideEndDatetime());
+        ride.setRideStartCoordinates(ridePOJO.getRideStartCoordinates());
+        ride.setRideEndCoordinates(ridePOJO.getRideEndCoordinates());
+        ride.setRideCapacity(ridePOJO.getRideCapacity());
+        return ride;
+    }
+
+    public RidePOJO fillPojo(RideModel rideModel){
+        RidePOJO ride = new RidePOJO();
+        ride.setIdVehicle(rideModel.getIdVehicle());
+        ride.setRideStartDatetime(rideModel.getRideStartDatetime());
+        ride.setRideEndDatetime(rideModel.getRideEndDatetime());
+        ride.setRideStartCoordinates(rideModel.getRideStartCoordinates());
+        ride.setRideEndCoordinates(rideModel.getRideEndCoordinates());
+        ride.setRideCapacity(rideModel.getRideCapacity());
+        return ride;
+    }
+
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping
-    public List<RideModel> findAll() {
-        return rideService.findAll();
+    public List<RidePOJO> findAll() {
+        List<RidePOJO> rides = new ArrayList<>();
+        List<RideModel> ridesModels = rideService.findAll();
+        for (RideModel ride:ridesModels) {
+            rides.add(fillPojo(ride));
+        }
+        return rides;
     }
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping("/{id}")
-    public ResponseEntity<RideModel> findById(@PathVariable int id) {
+    public ResponseEntity<RidePOJO> findById(@PathVariable int id) {
         try {
-            return ResponseEntity.ok(rideService.findById(id));
+            return ResponseEntity.ok(fillPojo(rideService.findById(id)));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
 
@@ -68,31 +101,32 @@ public class RideController {
 
     // PostMapping hace una peticion post a la ruta del controlador
     @PostMapping
-    public ResponseEntity<RideModel> create(@RequestBody RideModel rideModel) {
+    public ResponseEntity<Void> create(@RequestBody RidePOJO ridePOJO) {
         try {
+            rideService.save(fillModel(ridePOJO));
             logger.trace(HttpStatus.CREATED.toString());
-            return ResponseEntity.status(HttpStatus.CREATED).body(rideService.save(rideModel));
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     // PutMapping hace una peticion put a la ruta del controlador
     @PutMapping("/{id}")
-    public ResponseEntity<RideModel> update(@RequestBody RideModel rideModel) {
+    public ResponseEntity<Void> update(@RequestBody RidePOJO ridePOJO) {
         try {
             // Busqueda de prueba para saber si el registro ya existe
-            RideModel rideModel1 = rideService.findById(rideModel.getIdRide());
+            RideModel rideModel1 = rideService.findById(ridePOJO.getIdRide());
             logger.trace(HttpStatus.CREATED.toString());
-            return ResponseEntity.status(HttpStatus.CREATED).body(rideService.save(rideModel));
+            return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
     }
@@ -104,13 +138,13 @@ public class RideController {
         try {
             rideService.deleteById(id);
             logger.trace(HttpStatus.OK.toString());
-            return ResponseEntity.status(HttpStatus.OK).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
     }

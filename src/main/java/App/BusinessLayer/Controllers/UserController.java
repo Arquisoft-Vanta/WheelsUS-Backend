@@ -4,20 +4,12 @@ import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Pojo.UserPOJO;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
-
-import java.beans.PropertyEditorSupport;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,10 +89,10 @@ public class UserController {
             return ResponseEntity.ok(fillPOJO(userService.findById(id)));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
 
@@ -111,8 +103,8 @@ public class UserController {
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
 
         try {
-            logger.trace(HttpStatus.CREATED.toString());
             userService.save(fillModel(userPOJO));
+            logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
@@ -129,7 +121,7 @@ public class UserController {
             UserModel usuarioModel1 =
                     userService.findById(userPOJO.getIdUser());
             userService.save(fillModel(userPOJO));
-            logger.error(HttpStatus.CREATED.toString());
+            logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (JsonParseException e) {
