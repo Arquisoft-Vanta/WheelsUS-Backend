@@ -34,3 +34,4 @@ build/
 *.log
 !log/
 log/*
+log/spring.log
