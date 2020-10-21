@@ -8,7 +8,6 @@
 /*==============================================================*/
 create table vehicle (
    ID_VEHICLE           SERIAL		     not null,
-   ID_USER              INT4                 null,
    ID_VEHICLE_TYPE      INT4                 null,
    VEHICLE_OWNER        INT4                 not null,
    VEHICLE_LICENSEPLATE VARCHAR(10)          not null,

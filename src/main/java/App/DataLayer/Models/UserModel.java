@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -53,6 +54,7 @@ public class UserModel {
 
     @Id // Primary key, con autoincremento
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_user")
     private int idUser;
 
     private String userName;

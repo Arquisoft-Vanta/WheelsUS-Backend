@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.UserService;
@@ -24,7 +19,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 @RestController
@@ -37,6 +33,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 
 public class UserController {
+    
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
 
@@ -98,8 +96,10 @@ public class UserController {
         try {
             return ResponseEntity.ok(fillPOJO(userService.findById(id)));
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         }
@@ -111,15 +111,16 @@ public class UserController {
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
         userService.save(fillModel(userPOJO));
         return new ResponseEntity<>(HttpStatus.CREATED);
-        /*
+        
         try {
+            logger.trace(HttpStatus.CREATED.toString());
             UserPOJO userPOJO = fillPOJO(userModel);
             userService.save(fillModel(userPOJO));
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
+        }
     }
 
 
@@ -131,13 +132,15 @@ public class UserController {
             UserModel usuarioModel1 =
                     userService.findById(userPOJO.getIdUser());
             userService.save(fillModel(userPOJO));
+            logger.error(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
         }
     }
 
@@ -146,11 +149,15 @@ public class UserController {
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         try {
             userService.deleteById(id);
+            logger.trace(HttpStatus.OK.toString());
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         }
 
     }
