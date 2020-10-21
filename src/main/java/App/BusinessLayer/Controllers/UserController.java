@@ -64,7 +64,6 @@ public class UserController {
         user.setUniversityId(userModel.getUniversityId());
         user.setUserMail(userModel.getUserMail());
         user.setUserAddress(userModel.getUserAddress());
-        user.setPassword(userModel.getPassword());
         user.setRegistryDatetime(userModel.getRegistryDatetime());
         user.setPicture(userModel.getPicture());
         user.setRh(userModel.getRh());

@@ -29,10 +29,27 @@ public class UserPOJO {
 
     private String Rh;
 
+    public UserPOJO(int idUser, String userName, String userDoc,
+                    String userPhone, int universityId, String userMail,
+                    String userAddress, String password,
+                    LocalDateTime registryDatetime, String picture, String rh) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.userDoc = userDoc;
+        this.userPhone = userPhone;
+        this.universityId = universityId;
+        this.userMail = userMail;
+        this.userAddress = userAddress;
+        this.password = password;
+        this.registryDatetime = registryDatetime;
+        this.picture = picture;
+        Rh = rh;
+    }
+
     public UserPOJO(String userName, String userDoc, String userPhone,
                     int universityId, String userMail, String userAddress,
-                    String password,  LocalDateTime registryDatetime,
-                     String rh) {
+                    String password, LocalDateTime registryDatetime,
+                    String rh) {
         this.userName = userName;
         this.userDoc = userDoc;
         this.userPhone = userPhone;
