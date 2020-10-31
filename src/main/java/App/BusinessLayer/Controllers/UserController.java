@@ -4,13 +4,17 @@ import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Pojo.UserPOJO;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 import javax.persistence.EntityNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,7 +29,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 
 public class UserController {
-    
+
     Logger logger = LoggerFactory.getLogger(UserController.class);
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
@@ -36,7 +40,8 @@ public class UserController {
     //@Autowired
     private PasswordEncoder passwordEncoder;
 
-    public UserController( UserService userService,  PasswordEncoder passwordEncoder ){
+    public UserController(UserService userService,
+                          PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -56,7 +61,7 @@ public class UserController {
         return user;
     }
 
-    public UserPOJO fillPOJO(UserModel userModel){
+    public UserPOJO fillPOJO(UserModel userModel) {
         UserPOJO user = new UserPOJO();
         user.setUserName(userModel.getUserName());
         user.setUserDoc(userModel.getUserDoc());
@@ -75,7 +80,7 @@ public class UserController {
     public List<UserPOJO> findAll() {
         List<UserPOJO> users = new ArrayList<>();
         List<UserModel> userModels = userService.findAll();
-        for (UserModel user:userModels) {
+        for (UserModel user : userModels) {
             users.add(fillPOJO(user));
         }
         return users;
@@ -101,7 +106,9 @@ public class UserController {
     // PostMapping hace una peticion post a la ruta del controlador
     @PostMapping("/signup")
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
-
+        if (userPOJO.getUserName().equals("") || userPOJO.getUserPhone().equals("") || userPOJO.getUserMail().equals("") || userPOJO.getPassword().equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         try {
             userService.save(fillModel(userPOJO));
             logger.trace(HttpStatus.CREATED.toString());
