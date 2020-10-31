@@ -1,30 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Pojo.UserPOJO;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
-
-import java.beans.PropertyEditorSupport;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.persistence.EntityNotFoundException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 @RestController
@@ -37,6 +25,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 
 public class UserController {
+    
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     // Autowired asigna un objeto a la instancia en el momento en el que
     // sea requerido
 
@@ -74,7 +64,6 @@ public class UserController {
         user.setUniversityId(userModel.getUniversityId());
         user.setUserMail(userModel.getUserMail());
         user.setUserAddress(userModel.getUserAddress());
-        user.setPassword(userModel.getPassword());
         user.setRegistryDatetime(userModel.getRegistryDatetime());
         user.setPicture(userModel.getPicture());
         user.setRh(userModel.getRh());
@@ -98,9 +87,11 @@ public class UserController {
         try {
             return ResponseEntity.ok(fillPOJO(userService.findByUserMail(userMail)));
         } catch (JsonParseException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            logger.error(HttpStatus.BAD_REQUEST.toString());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            logger.error(HttpStatus.NOT_FOUND.toString());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
 
@@ -110,17 +101,15 @@ public class UserController {
     // PostMapping hace una peticion post a la ruta del controlador
     @PostMapping("/signup")
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
-        userService.save(fillModel(userPOJO));
-        return new ResponseEntity<>(HttpStatus.CREATED);
-        /*
+
         try {
-            UserPOJO userPOJO = fillPOJO(userModel);
             userService.save(fillModel(userPOJO));
+            logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
+        }
     }
 
 
@@ -132,13 +121,15 @@ public class UserController {
             UserModel usuarioModel1 =
                     userService.findById(userPOJO.getIdUser());
             userService.save(fillModel(userPOJO));
+            logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
         }
     }
 
@@ -147,11 +138,15 @@ public class UserController {
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         try {
             userService.deleteById(id);
+            logger.trace(HttpStatus.OK.toString());
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         }
 
     }

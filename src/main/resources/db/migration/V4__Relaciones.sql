@@ -2,11 +2,11 @@
 /* Index: OWNED_BY_FK                                           */
 /*==============================================================*/
 create  index OWNED_BY_FK on vehicle (
-ID_USER
+vehicle_owner
 );
 
 
 alter table VEHICLE
-   add constraint FK_VEHICLE_OWNED_BY_USERS foreign key (ID_USER)
+   add constraint FK_VEHICLE_OWNED_BY_USERS foreign key (vehicle_owner)
       references "user" (ID_USER)
       on delete restrict on update restrict;
