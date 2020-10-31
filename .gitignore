@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /nbproject/
+log/spring.log.2020-10-30.0.gz

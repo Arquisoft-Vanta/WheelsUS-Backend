@@ -7,22 +7,19 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter{
+public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-    private static final String[] publicResources = new String[]{ "/registro/nuevo-usuario/rol/**", "/roles" };
-    private static final String[] userResources = new String[]{ "/usuario/**", "/registro/nuevo-rol/**" };
-    private static final String[] teacherResources = new String[]{ "/profesor/**" };
-    private static final String[] studentResources = new String[]{ "/estudiante/**" };
+    private static final String[] publicResources =
+            new String[]{"/api/user/signup"};
+    private static final String[] userResources = new String[]{"/api/vehicle" +
+            "/**", "/api/ride/**", "/api/user"};
 
     @Override
-    public void configure( HttpSecurity httpSecurity ) throws Exception{
-        httpSecurity
-                .authorizeRequests( )
-                .antMatchers( publicResources ).permitAll( )
-                .antMatchers( userResources ).authenticated( )
-                .antMatchers( teacherResources ).hasAuthority( "ROLE_PROFESOR" )
-                .antMatchers( studentResources ).hasAuthority( "ROLE_ESTUDIANTE" )
-                .and( ).cors( ).disable( );
+    public void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests()
+                .antMatchers(publicResources).permitAll()
+                .antMatchers(userResources).authenticated()
+                .and().cors().disable();
     }
 
 }

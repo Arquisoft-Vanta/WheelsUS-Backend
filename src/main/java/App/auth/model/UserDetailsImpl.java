@@ -13,20 +13,20 @@ import java.util.List;
 
 public class UserDetailsImpl implements UserDetails{
 
-    private String username;
+    private String userMail;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
 
     public UserDetailsImpl( UserModel user ){
-        this.username = user.getUserName( );
+        this.userMail = user.getUserMail( );
         this.password = user.getPassword( );
         //this.authorities = translateRoles( user.getRoles( ) );
     }
 
     @Override
     public String getUsername( ){
-        return username;
+        return userMail;
     }
 
     @Override
@@ -58,13 +58,5 @@ public class UserDetailsImpl implements UserDetails{
     public boolean isEnabled( ){
         return true;
     }
-
-/*    private Collection<? extends GrantedAuthority> translateRoles( List<Role> roles ){
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>( );
-        for( Role role : roles ){
-            String roleName = "ROLE_" + role.getRoleName( ).toUpperCase( );
-            grantedAuthorities.add( new SimpleGrantedAuthority( roleName ) );
-        }
-        return grantedAuthorities;
-    }*/
+    
 }

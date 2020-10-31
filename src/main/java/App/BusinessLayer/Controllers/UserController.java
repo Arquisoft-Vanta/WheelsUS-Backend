@@ -93,10 +93,10 @@ public class UserController {
     }
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
-    @GetMapping("/{id}")
-    public ResponseEntity<UserPOJO> findById(@PathVariable int id) {
+    @GetMapping("/{userMail}")
+    public ResponseEntity<UserPOJO> findByUserMail(@PathVariable String userMail) {
         try {
-            return ResponseEntity.ok(fillPOJO(userService.findById(id)));
+            return ResponseEntity.ok(fillPOJO(userService.findByUserMail(userMail)));
         } catch (JsonParseException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (EntityNotFoundException e) {
@@ -106,8 +106,9 @@ public class UserController {
 
     }
 
+
     // PostMapping hace una peticion post a la ruta del controlador
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<Void> create(@RequestBody UserPOJO userPOJO) {
         userService.save(fillModel(userPOJO));
         return new ResponseEntity<>(HttpStatus.CREATED);

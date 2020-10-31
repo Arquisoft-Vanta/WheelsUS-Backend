@@ -17,8 +17,8 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter{
 
-    private static final String TRUSTED_CLIENT = "soft-eng-ii";
-    private static final String SECRET = "secret";
+    private static final String TRUSTED_CLIENT = "wheels-us";
+    private static final String SECRET = "dragonfly-software";
     private static final String[] AUTHORIZED_GRANT_TYPES = new String[]{ "client_credentials", "password" };
     private static final String[] SCOPES = new String[]{ "read", "write", "trust" };
     private static final String[] RESOURCE_IDS = new String[] { "oauth2-resource" };

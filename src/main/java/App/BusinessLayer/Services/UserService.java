@@ -30,8 +30,8 @@ public class UserService {
     public UserModel save(UserModel touristModel){
         return userRepository.save(touristModel);
     }
-    public UserModel findByUserName( String username ){
-        return userRepository.findByUserName( username );
+    public UserModel findByUserMail( String userMail ){
+        return userRepository.findByuserMail( userMail );
     }
     public void deleteById(int id){
         userRepository.deleteById(id);
