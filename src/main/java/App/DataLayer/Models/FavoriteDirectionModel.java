@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Data
-@Table(name = "`favoritedirection`")
+@Table(name = "favoriteDestination")
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
