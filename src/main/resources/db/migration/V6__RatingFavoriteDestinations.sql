@@ -3,7 +3,6 @@
 /*==============================================================*/
 create table FAVORITE_DESTINATION (
    ID_FAV_DEST          INT4                 not null,
-   ID_USER              INT4                 null,
    ID_USER_FAV          INT4                 not null,
    FAV_LATITUDE         VARCHAR(50)          not null,
    FAV_LONGITUDE        VARCHAR(50)          not null,
@@ -24,7 +23,7 @@ ID_FAV_DEST
 /* Index: ARE_FAVORITE_FK                                       */
 /*==============================================================*/
 create  index ARE_FAVORITE_FK on FAVORITE_DESTINATION (
-ID_USER
+ID_USER_FAV
 );
 
 /*==============================================================*/
@@ -47,7 +46,7 @@ ID_RATING
 );
 
 alter table FAVORITE_DESTINATION
-   add constraint FK_FAVORITE_ARE_FAVOR_USER foreign key (ID_USER)
+   add constraint FK_FAVORITE_ARE_FAVOR_USER foreign key (ID_USER_FAV)
       references "user" (ID_USER)
       on delete restrict on update restrict;
 
