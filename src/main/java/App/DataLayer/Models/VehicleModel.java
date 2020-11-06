@@ -114,7 +114,5 @@ public class VehicleModel{
     @ManyToOne
     @JoinColumn( name = "vehicle_owner", insertable=false, updatable=false  )
     private UserModel userModel;
-    
-    @OneToMany( mappedBy = "idVehicle" )
-    private List<RideModel> rideModel;
+   
 }
