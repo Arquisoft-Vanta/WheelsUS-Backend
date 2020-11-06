@@ -1,287 +1,37 @@
-2020-10-21 08:37:34.485  INFO 5932 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 5932 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
-2020-10-21 08:37:34.501 DEBUG 5932 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 08:37:34.501  INFO 5932 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 08:37:35.312  INFO 5932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 08:37:35.374  INFO 5932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52ms. Found 3 JPA repository interfaces.
-2020-10-21 08:37:36.323  INFO 5932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 08:37:36.339  INFO 5932 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 08:37:36.339  INFO 5932 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 08:37:36.455  INFO 5932 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 08:37:36.455  INFO 5932 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1901 ms
-2020-10-21 08:37:36.609  INFO 5932 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 08:37:36.772  INFO 5932 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
-2020-10-21 08:37:36.883  INFO 5932 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.097s)
-2020-10-21 08:37:36.883  INFO 5932 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
-2020-10-21 08:37:36.883  INFO 5932 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2020-10-21 08:37:36.983  INFO 5932 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 08:37:37.083  INFO 5932 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 08:37:37.115  WARN 5932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 08:37:37.146  INFO 5932 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 08:37:37.358  INFO 5932 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 08:37:37.489  INFO 5932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 08:37:37.489  INFO 5932 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2020-10-21 08:37:37.507  INFO 5932 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 08:37:37.578  INFO 5932 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 08:37:37.611  INFO 5932 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 08:37:38.608  INFO 5932 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 08:37:38.608  INFO 5932 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 08:37:38.847  INFO 5932 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 08:37:38.847  INFO 5932 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 4.795 seconds (JVM running for 5.223)
-2020-10-21 08:38:17.649  INFO 13012 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 13012 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
-2020-10-21 08:38:17.649 DEBUG 13012 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 08:38:17.649  INFO 13012 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 08:38:18.204  INFO 13012 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 08:38:18.251  INFO 13012 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46ms. Found 3 JPA repository interfaces.
-2020-10-21 08:38:19.113  INFO 13012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 08:38:19.129  INFO 13012 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 08:38:19.129  INFO 13012 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 08:38:19.243  INFO 13012 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 08:38:19.243  INFO 13012 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1556 ms
-2020-10-21 08:38:19.359  INFO 13012 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 08:38:19.497  INFO 13012 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
-2020-10-21 08:38:19.538  INFO 13012 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.031s)
-2020-10-21 08:38:19.548  INFO 13012 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
-2020-10-21 08:38:19.548  INFO 13012 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2020-10-21 08:38:19.629  INFO 13012 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 08:38:19.669  INFO 13012 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 08:38:19.764  WARN 13012 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 08:38:19.779  INFO 13012 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 08:38:19.926  INFO 13012 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 08:38:20.027  INFO 13012 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 08:38:20.080  INFO 13012 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 08:38:20.096  INFO 13012 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 08:38:20.127  INFO 13012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 08:38:20.127  INFO 13012 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2020-10-21 08:38:20.914  INFO 13012 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 08:38:20.929  INFO 13012 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 08:38:21.114  INFO 13012 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 08:38:21.130  INFO 13012 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 3.826 seconds (JVM running for 4.207)
-2020-10-21 09:03:19.720  INFO 17504 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on DESKTOP-5OE7N4J with PID 17504 (E:\Universidad\Codigo\WheelsUS\Backend\target\classes started by gonza in E:\Universidad\Codigo\WheelsUS\Backend)
-2020-10-21 09:03:19.720 DEBUG 17504 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 09:03:19.720  INFO 17504 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 09:03:23.593  INFO 17504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 09:03:23.837  INFO 17504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 166ms. Found 3 JPA repository interfaces.
-2020-10-21 09:03:27.720  INFO 17504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 09:03:27.736  INFO 17504 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 09:03:27.736  INFO 17504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 09:03:28.205  INFO 17504 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 09:03:28.205  INFO 17504 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8250 ms
-2020-10-21 09:03:28.692  INFO 17504 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 09:03:28.958  INFO 17504 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.3)
-2020-10-21 09:03:29.599  WARN 17504 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Validate failed: 
-Migration checksum mismatch for migration version 2
--> Applied to database : -1245836310
--> Resolved locally    : -1277949479
-Migration checksum mismatch for migration version 4
--> Applied to database : 1523537589
--> Resolved locally    : -473312631
-
-2020-10-21 09:03:29.599  INFO 17504 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2020-10-21 09:03:29.661  INFO 17504 --- [main] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2020-10-21 09:03:29.677 ERROR 17504 --- [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Validate failed: 
-Migration checksum mismatch for migration version 2
--> Applied to database : -1245836310
--> Resolved locally    : -1277949479
-Migration checksum mismatch for migration version 4
--> Applied to database : 1523537589
--> Resolved locally    : -473312631
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1794) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:311) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1109) ~[spring-context-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) ~[spring-context-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at App.WheelsUsBackendApplication.main(WheelsUsBackendApplication.java:13) [classes/:na]
-Caused by: org.flywaydb.core.api.FlywayException: Validate failed: 
-Migration checksum mismatch for migration version 2
--> Applied to database : -1245836310
--> Resolved locally    : -1277949479
-Migration checksum mismatch for migration version 4
--> Applied to database : 1523537589
--> Resolved locally    : -473312631
-
-	at org.flywaydb.core.Flyway.doValidate(Flyway.java:285) ~[flyway-core-6.4.4.jar:na]
-	at org.flywaydb.core.Flyway.access$100(Flyway.java:74) ~[flyway-core-6.4.4.jar:na]
-	at org.flywaydb.core.Flyway$1.execute(Flyway.java:167) ~[flyway-core-6.4.4.jar:na]
-	at org.flywaydb.core.Flyway$1.execute(Flyway.java:159) ~[flyway-core-6.4.4.jar:na]
-	at org.flywaydb.core.Flyway.execute(Flyway.java:530) ~[flyway-core-6.4.4.jar:na]
-	at org.flywaydb.core.Flyway.migrate(Flyway.java:159) ~[flyway-core-6.4.4.jar:na]
-	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:65) ~[spring-boot-autoconfigure-2.3.3.RELEASE.jar:2.3.3.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1790) ~[spring-beans-5.2.8.RELEASE.jar:5.2.8.RELEASE]
-	... 19 common frames omitted
-
-2020-10-21 09:10:18.044  INFO 22520 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on DESKTOP-5OE7N4J with PID 22520 (E:\Universidad\Codigo\WheelsUS\Backend\target\classes started by gonza in E:\Universidad\Codigo\WheelsUS\Backend)
-2020-10-21 09:10:18.049 DEBUG 22520 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 09:10:18.050  INFO 22520 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 09:10:20.354  INFO 22520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 09:10:20.482  INFO 22520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105ms. Found 3 JPA repository interfaces.
-2020-10-21 09:10:22.335  INFO 22520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 09:10:22.351  INFO 22520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 09:10:22.351  INFO 22520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 09:10:22.614  INFO 22520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 09:10:22.615  INFO 22520 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4423 ms
-2020-10-21 09:10:23.076  INFO 22520 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 09:10:23.419  INFO 22520 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.3)
-2020-10-21 09:10:23.486  INFO 22520 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.035s)
-2020-10-21 09:10:23.525  INFO 22520 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" with baseline ...
-2020-10-21 09:10:24.211  INFO 22520 --- [main] o.f.core.internal.command.DbBaseline     : Successfully baselined schema with version: 1
-2020-10-21 09:10:24.231  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
-2020-10-21 09:10:24.246  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 2 - CreateDatabase
-2020-10-21 09:10:24.537  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 3 - AdicionCampos
-2020-10-21 09:10:24.553  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 4 - Relaciones
-2020-10-21 09:10:24.711  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 5 - AdicionTablasYRelaciones
-2020-10-21 09:10:25.123  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 6 - ModifLenght
-2020-10-21 09:10:25.191  INFO 22520 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 5 migrations to schema "public" (execution time 00:00.969s)
-2020-10-21 09:10:25.654  INFO 22520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 09:10:25.987  INFO 22520 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 09:10:26.318  WARN 22520 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 09:10:26.464  INFO 22520 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 09:10:27.224  INFO 22520 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 09:10:27.764  INFO 22520 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 09:10:27.909  INFO 22520 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 09:10:28.109  INFO 22520 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 09:10:28.868  INFO 22520 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2740e316, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f8d86e4, org.springframework.security.web.header.HeaderWriterFilter@7fc420b8, org.springframework.security.web.authentication.logout.LogoutFilter@5ebffb44, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2525a5b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1697f2b3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e3eb0cd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b5a4aed, org.springframework.security.web.session.SessionManagementFilter@e38f0b7, org.springframework.security.web.access.ExceptionTranslationFilter@4976085, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4baed682]
-2020-10-21 09:10:28.986  INFO 22520 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@76e9f00b, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@314b9e4b, org.springframework.security.web.context.SecurityContextPersistenceFilter@42cc183e, org.springframework.security.web.header.HeaderWriterFilter@2ecf5915, org.springframework.security.web.authentication.logout.LogoutFilter@205df5dc, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@40d23c82, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e4e8fdf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a1d6ef2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f1b8544, org.springframework.security.web.session.SessionManagementFilter@53e76c11, org.springframework.security.web.access.ExceptionTranslationFilter@5d342959, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6bfaa0a6]
-2020-10-21 09:10:29.001  INFO 22520 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3667faa8, org.springframework.security.web.context.SecurityContextPersistenceFilter@40fa8766, org.springframework.security.web.header.HeaderWriterFilter@69cd1085, org.springframework.security.web.csrf.CsrfFilter@19a20bb2, org.springframework.security.web.authentication.logout.LogoutFilter@14fded9d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6198e9b5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5d7399f9, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1756f7cc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@10947c4e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67774e29, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@663f237a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3138953b, org.springframework.security.web.session.SessionManagementFilter@60bb7995, org.springframework.security.web.access.ExceptionTranslationFilter@3eb3232b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f2d995e]
-2020-10-21 09:10:30.836  INFO 22520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 09:10:30.910  INFO 22520 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
-2020-10-21 09:10:38.454  INFO 22520 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 09:10:38.790  INFO 22520 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 09:10:43.350  INFO 22520 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 09:10:43.530  INFO 22520 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 26.835 seconds (JVM running for 28.226)
-2020-10-21 09:11:33.482  INFO 22520 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-21 09:11:33.482  INFO 22520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-10-21 09:11:33.572  INFO 22520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 90 ms
-2020-10-21 09:11:34.650 TRACE 22520 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 201 CREATED
-2020-10-21 09:20:57.164 TRACE 22520 --- [http-nio-8080-exec-5] A.B.Controllers.UserController           : 201 CREATED
-2020-10-21 09:24:19.391 TRACE 22520 --- [http-nio-8080-exec-8] A.B.Controllers.UserController           : 201 CREATED
-2020-10-21 15:20:21.385  INFO 21896 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on DESKTOP-5OE7N4J with PID 21896 (E:\Universidad\Codigo\WheelsUS\Backend\target\classes started by gonza in E:\Universidad\Codigo\WheelsUS\Backend)
-2020-10-21 15:20:21.400 DEBUG 21896 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 15:20:21.400  INFO 21896 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 15:20:23.751  INFO 21896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 15:20:23.891  INFO 21896 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108ms. Found 3 JPA repository interfaces.
-2020-10-21 15:20:25.751  INFO 21896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 15:20:25.782  INFO 21896 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 15:20:25.782  INFO 21896 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 15:20:26.032  INFO 21896 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 15:20:26.032  INFO 21896 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4437 ms
-2020-10-21 15:20:26.407  INFO 21896 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 15:20:26.735  INFO 21896 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.3)
-2020-10-21 15:20:27.048  INFO 21896 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.223s)
-2020-10-21 15:20:27.095  INFO 21896 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
-2020-10-21 15:20:27.095  INFO 21896 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2020-10-21 15:20:27.423  INFO 21896 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 15:20:27.813  INFO 21896 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 15:20:28.063  WARN 21896 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 15:20:28.079  INFO 21896 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 15:20:28.829  INFO 21896 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 15:20:29.204  INFO 21896 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 15:20:29.282  INFO 21896 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 15:20:29.438  INFO 21896 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 15:20:30.236  INFO 21896 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a8b81e8, org.springframework.security.web.context.SecurityContextPersistenceFilter@77bc2e16, org.springframework.security.web.header.HeaderWriterFilter@591a4f8e, org.springframework.security.web.authentication.logout.LogoutFilter@40230eb9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@31db34da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20a7953c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71b639d0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@234cff57, org.springframework.security.web.session.SessionManagementFilter@6ba060f3, org.springframework.security.web.access.ExceptionTranslationFilter@608b1fd2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@751ae8a4]
-2020-10-21 15:20:30.297  INFO 21896 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@118dcbbd, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d979d34, org.springframework.security.web.context.SecurityContextPersistenceFilter@5034f5dd, org.springframework.security.web.header.HeaderWriterFilter@53c1179a, org.springframework.security.web.authentication.logout.LogoutFilter@6d2a2560, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@2e26173, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31b7d869, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a916402, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@350ec690, org.springframework.security.web.session.SessionManagementFilter@7650ded6, org.springframework.security.web.access.ExceptionTranslationFilter@2a097d77, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2c2a027c]
-2020-10-21 15:20:30.306  INFO 21896 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28369db0, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ecf5915, org.springframework.security.web.header.HeaderWriterFilter@66deec87, org.springframework.security.web.csrf.CsrfFilter@3451f01d, org.springframework.security.web.authentication.logout.LogoutFilter@2721044, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@61514735, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3e4e8fdf, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@30893e08, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@43b5021c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53e76c11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42cc183e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e86807a, org.springframework.security.web.session.SessionManagementFilter@5d342959, org.springframework.security.web.access.ExceptionTranslationFilter@1cfc2538, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79aee22a]
-2020-10-21 15:20:31.362  INFO 21896 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 15:20:31.362  INFO 21896 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
-2020-10-21 15:20:33.286  INFO 21896 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 15:20:33.335  INFO 21896 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 15:20:34.672  INFO 21896 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 15:20:34.723  INFO 21896 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 14.774 seconds (JVM running for 15.942)
-2020-10-21 15:20:58.791  INFO 21896 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-21 15:20:58.791  INFO 21896 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-10-21 15:20:58.806  INFO 21896 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
-2020-10-21 15:20:59.097 ERROR 21896 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 404 NOT_FOUND
-2020-10-21 15:22:25.362 ERROR 21896 --- [http-nio-8080-exec-10] A.B.Controllers.UserController           : 404 NOT_FOUND
-2020-10-21 15:23:01.055 ERROR 21896 --- [http-nio-8080-exec-2] A.B.Controllers.UserController           : 404 NOT_FOUND
-2020-10-21 15:23:49.652  INFO 18712 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on DESKTOP-5OE7N4J with PID 18712 (E:\Universidad\Codigo\WheelsUS\Backend\target\classes started by gonza in E:\Universidad\Codigo\WheelsUS\Backend)
-2020-10-21 15:23:49.657 DEBUG 18712 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 15:23:49.657  INFO 18712 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 15:23:51.291  INFO 18712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 15:23:51.401  INFO 18712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96ms. Found 3 JPA repository interfaces.
-2020-10-21 15:23:52.666  INFO 18712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 15:23:52.682  INFO 18712 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 15:23:52.682  INFO 18712 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 15:23:52.885  INFO 18712 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 15:23:52.885  INFO 18712 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3103 ms
-2020-10-21 15:23:53.135  INFO 18712 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 15:23:53.323  INFO 18712 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.3)
-2020-10-21 15:23:53.401  INFO 18712 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.046s)
-2020-10-21 15:23:53.416  INFO 18712 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
-2020-10-21 15:23:53.416  INFO 18712 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2020-10-21 15:23:53.557  INFO 18712 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 15:23:53.745  INFO 18712 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 15:23:53.885  INFO 18712 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 15:23:53.885  WARN 18712 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 15:23:54.182  INFO 18712 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 15:23:54.370  INFO 18712 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 15:23:54.479  INFO 18712 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 15:23:54.526  INFO 18712 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 15:23:54.995  INFO 18712 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4bcaa195, org.springframework.security.web.context.SecurityContextPersistenceFilter@57c00115, org.springframework.security.web.header.HeaderWriterFilter@7c51782d, org.springframework.security.web.authentication.logout.LogoutFilter@7c0777b5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@16a5eb6d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fe533ff, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ee27d73, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d08edc5, org.springframework.security.web.session.SessionManagementFilter@48e8c32a, org.springframework.security.web.access.ExceptionTranslationFilter@53ed80d3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2da16263]
-2020-10-21 15:23:55.010  INFO 18712 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@49cb1baf, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3664f108, org.springframework.security.web.context.SecurityContextPersistenceFilter@1a47a1e8, org.springframework.security.web.header.HeaderWriterFilter@31b7d869, org.springframework.security.web.authentication.logout.LogoutFilter@24eeac69, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@7d21852b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d2a2560, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@62d1dc3c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77dba4cd, org.springframework.security.web.session.SessionManagementFilter@6a916402, org.springframework.security.web.access.ExceptionTranslationFilter@5034f5dd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@350ec690]
-2020-10-21 15:23:55.026  INFO 18712 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4548d254, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e4e8fdf, org.springframework.security.web.header.HeaderWriterFilter@53e76c11, org.springframework.security.web.csrf.CsrfFilter@66deec87, org.springframework.security.web.authentication.logout.LogoutFilter@6bcc3f27, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@43b5021c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@205df5dc, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@590f0c50, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2e86807a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6a1d6ef2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2721044, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@208f0007, org.springframework.security.web.session.SessionManagementFilter@42cc183e, org.springframework.security.web.access.ExceptionTranslationFilter@2ecf5915, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6bee793f]
-2020-10-21 15:23:55.713  INFO 18712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 15:23:55.713  INFO 18712 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
-2020-10-21 15:23:56.760  INFO 18712 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 15:23:56.776  INFO 18712 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 15:23:57.417  INFO 18712 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 15:23:57.432  INFO 18712 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 8.588 seconds (JVM running for 9.465)
-2020-10-21 15:24:05.997  INFO 18712 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-21 15:24:05.998  INFO 18712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-10-21 15:24:06.012  INFO 18712 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
-2020-10-21 15:24:06.315 ERROR 18712 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 404 NOT_FOUND
-2020-10-21 15:25:14.333  INFO 25220 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on DESKTOP-5OE7N4J with PID 25220 (E:\Universidad\Codigo\WheelsUS\Backend\target\classes started by gonza in E:\Universidad\Codigo\WheelsUS\Backend)
-2020-10-21 15:25:14.338 DEBUG 25220 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
-2020-10-21 15:25:14.339  INFO 25220 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
-2020-10-21 15:25:15.973  INFO 25220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-10-21 15:25:16.104  INFO 25220 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114ms. Found 3 JPA repository interfaces.
-2020-10-21 15:25:17.649  INFO 25220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-10-21 15:25:17.668  INFO 25220 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-21 15:25:17.668  INFO 25220 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-10-21 15:25:17.909  INFO 25220 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-21 15:25:17.909  INFO 25220 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3449 ms
-2020-10-21 15:25:18.174  INFO 25220 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
-2020-10-21 15:25:18.362  INFO 25220 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.3)
-2020-10-21 15:25:18.423  INFO 25220 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.038s)
-2020-10-21 15:25:18.431  INFO 25220 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
-2020-10-21 15:25:18.432  INFO 25220 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2020-10-21 15:25:18.574  INFO 25220 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 15:25:18.747  INFO 25220 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-10-21 15:25:18.879  INFO 25220 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
-2020-10-21 15:25:18.893  WARN 25220 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-10-21 15:25:19.399  INFO 25220 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-10-21 15:25:19.614  INFO 25220 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-21 15:25:19.724  INFO 25220 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-21 15:25:19.755  INFO 25220 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2020-10-21 15:25:20.302  INFO 25220 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21eee94f, org.springframework.security.web.context.SecurityContextPersistenceFilter@4e83a98, org.springframework.security.web.header.HeaderWriterFilter@57c00115, org.springframework.security.web.authentication.logout.LogoutFilter@254449bb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@234cff57, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@71b639d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5807efad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6bc24e72, org.springframework.security.web.session.SessionManagementFilter@4fe533ff, org.springframework.security.web.access.ExceptionTranslationFilter@48e8c32a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@360e9c06]
-2020-10-21 15:25:20.333  INFO 25220 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@2525a5b8, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3458eca5, org.springframework.security.web.context.SecurityContextPersistenceFilter@24eeac69, org.springframework.security.web.header.HeaderWriterFilter@62d1dc3c, org.springframework.security.web.authentication.logout.LogoutFilter@2e7157c7, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@6f6c6077, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18539cb1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@748f93bb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e0fdb2f, org.springframework.security.web.session.SessionManagementFilter@3811510, org.springframework.security.web.access.ExceptionTranslationFilter@6d2a2560, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@34a2d6e0]
-2020-10-21 15:25:20.349  INFO 25220 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39c96e48, org.springframework.security.web.context.SecurityContextPersistenceFilter@6aa7b67f, org.springframework.security.web.header.HeaderWriterFilter@2721044, org.springframework.security.web.csrf.CsrfFilter@42cc183e, org.springframework.security.web.authentication.logout.LogoutFilter@6bee793f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4548d254, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@36920bd6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@188598ad, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3a90c13c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6bcc3f27, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79aee22a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40d23c82, org.springframework.security.web.session.SessionManagementFilter@205df5dc, org.springframework.security.web.access.ExceptionTranslationFilter@6a1d6ef2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@30893e08]
-2020-10-21 15:25:21.192  INFO 25220 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-10-21 15:25:21.192  INFO 25220 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
-2020-10-21 15:25:22.308  INFO 25220 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-10-21 15:25:22.324  INFO 25220 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-10-21 15:25:22.952  INFO 25220 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-10-21 15:25:22.958  INFO 25220 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 9.564 seconds (JVM running for 10.647)
-2020-10-21 15:25:28.770  INFO 25220 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-21 15:25:28.770  INFO 25220 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-10-21 15:25:28.786  INFO 25220 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
-2020-10-21 15:25:29.088 ERROR 25220 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 404 NOT_FOUND
-2020-10-21 15:27:58.372 ERROR 25220 --- [http-nio-8080-exec-5] A.B.Controllers.UserController           : 404 NOT_FOUND
+2020-11-05 17:54:53.974  INFO 4660 --- [main] App.WheelsUsBackendApplication           : Starting WheelsUsBackendApplication on Alienware15R4 with PID 4660 (D:\Users\cesar\Documents\GitHub\WheelsUS-Backend\target\classes started by cesar in D:\Users\cesar\Documents\GitHub\WheelsUS-Backend)
+2020-11-05 17:54:53.979 DEBUG 4660 --- [main] App.WheelsUsBackendApplication           : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2020-11-05 17:54:53.984  INFO 4660 --- [main] App.WheelsUsBackendApplication           : No active profile set, falling back to default profiles: default
+2020-11-05 17:54:54.705  INFO 4660 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-05 17:54:54.766  INFO 4660 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53ms. Found 2 JPA repository interfaces.
+2020-11-05 17:54:55.970  INFO 4660 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-11-05 17:54:55.982  INFO 4660 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-05 17:54:55.984  INFO 4660 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-05 17:54:56.112  INFO 4660 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-05 17:54:56.114  INFO 4660 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2082 ms
+2020-11-05 17:54:56.307  INFO 4660 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2020-11-05 17:54:57.286  INFO 4660 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/wheelsus-db (PostgreSQL 12.4)
+2020-11-05 17:54:57.612  INFO 4660 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.248s)
+2020-11-05 17:54:57.632  INFO 4660 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
+2020-11-05 17:54:57.642  INFO 4660 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-11-05 17:54:57.738  INFO 4660 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-05 17:54:57.834  INFO 4660 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-05 17:54:57.895  WARN 4660 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-05 17:54:57.906  INFO 4660 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2020-11-05 17:54:58.119  INFO 4660 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-05 17:54:58.261  INFO 4660 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-05 17:54:58.535  INFO 4660 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/oauth/token'], Ant [pattern='/oauth/token_key'], Ant [pattern='/oauth/check_token']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6bc24e72, org.springframework.security.web.context.SecurityContextPersistenceFilter@17aa8a11, org.springframework.security.web.header.HeaderWriterFilter@411a5965, org.springframework.security.web.authentication.logout.LogoutFilter@4e642ee1, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5e8507f1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18a25bbd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@53a84ff4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@724aefc3, org.springframework.security.web.session.SessionManagementFilter@5377414a, org.springframework.security.web.access.ExceptionTranslationFilter@20a7953c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ebffb44]
+2020-11-05 17:54:58.546  INFO 4660 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration$NotOAuthRequestMatcher@203d1d93, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c2a027c, org.springframework.security.web.context.SecurityContextPersistenceFilter@18539cb1, org.springframework.security.web.header.HeaderWriterFilter@3811510, org.springframework.security.web.authentication.logout.LogoutFilter@2a43e0ac, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@4fc5563d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@748f93bb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7f2d31af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@118dcbbd, org.springframework.security.web.session.SessionManagementFilter@24eeac69, org.springframework.security.web.access.ExceptionTranslationFilter@62d1dc3c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7be2f29a]
+2020-11-05 17:54:58.551  INFO 4660 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@655f69da, org.springframework.security.web.context.SecurityContextPersistenceFilter@66deec87, org.springframework.security.web.header.HeaderWriterFilter@72503b19, org.springframework.security.web.csrf.CsrfFilter@76130a29, org.springframework.security.web.authentication.logout.LogoutFilter@3e4e8fdf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79aee22a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@53e76c11, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@43b5021c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6bee793f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d342959, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ecf5915, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28369db0, org.springframework.security.web.session.SessionManagementFilter@1cfc2538, org.springframework.security.web.access.ExceptionTranslationFilter@3451f01d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6aa7b67f]
+2020-11-05 17:54:58.627  INFO 4660 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-05 17:54:58.647  INFO 4660 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2020-11-05 17:54:58.886  INFO 4660 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-05 17:54:58.886  INFO 4660 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-11-05 17:54:59.795  INFO 4660 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-05 17:54:59.805  INFO 4660 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-05 17:55:00.278  INFO 4660 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-11-05 17:55:00.288  INFO 4660 --- [main] App.WheelsUsBackendApplication           : Started WheelsUsBackendApplication in 6.874 seconds (JVM running for 7.291)
+2020-11-05 18:38:58.028  INFO 4660 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-05 18:38:58.028  INFO 4660 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-05 18:38:58.059  INFO 4660 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 31 ms
+2020-11-05 18:38:58.401 TRACE 4660 --- [http-nio-8080-exec-1] A.B.Controllers.UserController           : 201 CREATED
+2020-11-05 18:39:36.806  WARN 4660 --- [http-nio-8080-exec-3] o.s.s.o.provider.endpoint.TokenEndpoint  : Handling error: InvalidGrantException, Bad credentials
