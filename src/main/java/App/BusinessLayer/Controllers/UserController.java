@@ -1,7 +1,10 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.FavoriteDirectionPOJO;
+import App.BusinessLayer.Services.FavoriteDirectionService;
 import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Pojo.UserPOJO;
+import App.DataLayer.Models.FavoriteDirectionModel;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
 
@@ -9,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,15 +81,15 @@ public class UserController {
     }
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
-    @GetMapping
-    public List<UserPOJO> findAll() {
+    //@GetMapping
+    /*public List<UserPOJO> findAll() {
         List<UserPOJO> users = new ArrayList<>();
         List<UserModel> userModels = userService.findAll();
         for (UserModel user : userModels) {
             users.add(fillPOJO(user));
         }
         return users;
-    }
+    }*/
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping("/{userMail}")
@@ -157,4 +162,5 @@ public class UserController {
         }
 
     }
+
 }

@@ -1,8 +1,18 @@
 package App.BusinessLayer.Repositories;
 
 import App.DataLayer.Models.FavoriteDirectionModel;
+import App.DataLayer.Models.UserModel;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface FavoriteDirectionRepository extends JpaRepository<FavoriteDirectionModel, Integer> {
+import java.util.List;
+
+@Repository
+public interface FavoriteDirectionRepository extends CrudRepository<FavoriteDirectionModel, Integer> {
+
+    @Query("SELECT nameFd FROM FavoriteDirectionModel")
+    List<FavoriteDirectionModel> getDirectionByUser(UserModel user);
+
+
 }

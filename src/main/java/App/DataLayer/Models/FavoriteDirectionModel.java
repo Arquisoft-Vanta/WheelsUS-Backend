@@ -4,27 +4,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDateTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Data;
 import java.sql.Date;
 import java.util.List;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 @Data
-@Table(name = "favoriteDestination")
+@Table(name = "favorite_destination")
 // JsonIdentityInfo evita que se generen ciclos al leer la BD
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idFavoriteDirection")
-
 
 public class FavoriteDirectionModel {
 
@@ -32,84 +21,116 @@ public class FavoriteDirectionModel {
 
     }
 
-    public FavoriteDirectionModel(int idFavoriteDirection, double lat, double lng, String nameDirection, String nameAddress, int favoriteDirectionOwner){
-        this.idFavoriteDirection = idFavoriteDirection;
-        this.lat = lat;
-        this.lng = lng;
-        this.nameDirection = nameDirection;
-        this.nameAddress = nameAddress;
-        this.favoriteDirectionOwner= favoriteDirectionOwner;
+    public FavoriteDirectionModel(int idFavDest, String lat, String lng, String nameDirection, String nameAddress, int idUserFav){
+        this.idFavDest = idFavDest;
+        this.favLatitude = lat;
+        this.favLongitude = lng;
+        this.nameFd = nameDirection;
+        this.favAddress = nameAddress;
+        this.idUserFav= idUserFav;
     }
 
-    @Id // Primary key, con autoincremento
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idFavoriteDirection;
+    @Id
+    @SequenceGenerator( name = "DIRECTION_DIRECTIONID_GENERATOR", sequenceName = "public.direction_direction_id_seq", allocationSize = 1 )
+    @GeneratedValue( generator = "DIRECTION_DIRECTIONID_GENERATOR", strategy = GenerationType.SEQUENCE )
+    @Column( name = "id_fav_dest" )
+    private int idFavDest;
 
-    @Column(name = "favorite_direction_owner")
-    private int favoriteDirectionOwner;
+    @Column(name = "id_user_fav")
+    private int idUserFav;
 
-    @Column( name = "lat" )
-    private double lat;
+    private String favLatitude;
 
-    @Column( name = "lng" )
-    private double lng;
+    private String favLongitude;
 
-    @Column( name = "name_direction" )
-    private String nameDirection;
+    private String favAddress;
 
-    @Column( name = "dame_address" )
-    private String nameAddress;
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
+    private LocalDateTime datetimeCreationFav;
+
+    private String nameFd;
+
 
     @ManyToOne
-    @JoinColumn( name = "favorite_direction_owner", insertable=false, updatable=false  )
+    @JoinColumn( name = "id_user_fav", insertable=false, updatable=false  )
     private UserModel userModel;
 
-
-    public int getIdFavoriteDirection() {
-        return idFavoriteDirection;
+    public int getIdFavDest() {
+        return idFavDest;
     }
 
-    public void setIdFavoriteDirection(int idFavoriteDirection) {
-        this.idFavoriteDirection = idFavoriteDirection;
+    public void setIdFavDest(int idFavDest) {
+        this.idFavDest = idFavDest;
     }
 
-    public int getFavoriteDirectionOwner() {
-        return favoriteDirectionOwner;
+    public int getIdUserFav() {
+        return idUserFav;
     }
 
-    public void setFavoriteDirectionOwner(int favoriteDirectionOwner) {
-        this.favoriteDirectionOwner = favoriteDirectionOwner;
+    public void setIdUserFav(int idUserFav) {
+        this.idUserFav = idUserFav;
     }
 
-    public double getLat() {
-        return lat;
+    public String getFavLatitude() {
+        return favLatitude;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setFavLatitude(String favLatitude) {
+        this.favLatitude = favLatitude;
     }
 
-    public double getLng() {
-        return lng;
+    public String getFavLongitude() {
+        return favLongitude;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setFavLongitude(String favLongitude) {
+        this.favLongitude = favLongitude;
     }
 
-    public String getNameDirection() {
-        return nameDirection;
+    public String getFavAddress() {
+        return favAddress;
     }
 
-    public void setNameDirection(String nameDirection) {
-        this.nameDirection = nameDirection;
+    public void setFavAddress(String favAddress) {
+        this.favAddress = favAddress;
     }
 
-    public String getNameAddress() {
-        return nameAddress;
+    public LocalDateTime getDatetimeCreationFav() {
+        return datetimeCreationFav;
     }
 
-    public void setNameAddress(String nameAddress) {
-        this.nameAddress = nameAddress;
+    public void setDatetimeCreationFav(LocalDateTime datetimeCreationFav) {
+        this.datetimeCreationFav = datetimeCreationFav;
+    }
+
+    public String getNameFd() {
+        return nameFd;
+    }
+
+    public void setNameFd(String nameFd) {
+        this.nameFd = nameFd;
+    }
+
+    public UserModel getUserModel() {
+        return userModel;
+    }
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+    }
+
+    @Override
+    public String toString() {
+        return "FavoriteDirectionModel{" +
+                "idFavDest=" + idFavDest +
+                ", idUserFav=" + idUserFav +
+                ", favLatitude='" + favLatitude + '\'' +
+                ", favLongitude='" + favLongitude + '\'' +
+                ", favAddress='" + favAddress + '\'' +
+                ", datetimeCreationFav=" + datetimeCreationFav +
+                ", nameFd='" + nameFd + '\'' +
+                ", userModel=" + userModel +
+                '}';
     }
 }
+

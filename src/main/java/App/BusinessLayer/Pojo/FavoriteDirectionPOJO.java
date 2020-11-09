@@ -1,64 +1,71 @@
 package App.BusinessLayer.Pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDateTime;
+
 public class FavoriteDirectionPOJO {
 
-    private int idFavoriteDirection;
+    private String favLatitude;
 
-    private double lat;
+    private String favLongitude;
 
-    private double lng;
+    private String favAddress;
 
-    private String nameDirection;
+    @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
+    private LocalDateTime datetimeCreationFav;
 
-    private String nameAddress;
+    private String nameFd;
 
-    private int FavoriteDirectionOwner;
 
-    public double getLat() {
-        return lat;
+    public String getFavLatitude() {
+        return favLatitude;
     }
 
-    public int getIdFavoriteDirection() {
-        return idFavoriteDirection;
+    public void setFavLatitude(String favLatitude) {
+        this.favLatitude = favLatitude;
     }
 
-    public void setIdFavoriteDirection(int idFavoriteDirection) {
-        this.idFavoriteDirection = idFavoriteDirection;
+    public String getFavLongitude() {
+        return favLongitude;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setFavLongitude(String favLongitude) {
+        this.favLongitude = favLongitude;
     }
 
-    public double getLng() {
-        return lng;
+    public String getFavAddress() {
+        return favAddress;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setFavAddress(String favAddress) {
+        this.favAddress = favAddress;
     }
 
-    public String getNameDirection() {
-        return nameDirection;
+    public LocalDateTime getDateTimeCreationFav() {
+        return datetimeCreationFav;
     }
 
-    public void setNameDirection(String nameDirection) {
-        this.nameDirection = nameDirection;
+    @Override
+    public String toString() {
+        return "FavoriteDirectionPOJO{" +
+                ", favLatitude='" + favLatitude + '\'' +
+                ", favLongitude='" + favLongitude + '\'' +
+                ", favAddress='" + favAddress + '\'' +
+                ", datetimeCreationFav=" + datetimeCreationFav +
+                ", nameFd='" + nameFd + '\'' +
+                '}';
     }
 
-    public String getNameAddress() {
-        return nameAddress;
+    public void setDateTimeCreationFav(LocalDateTime dateTimeCreationFav) {
+        this.datetimeCreationFav = dateTimeCreationFav;
     }
 
-    public void setNameAddress(String nameAddress) {
-        this.nameAddress = nameAddress;
+    public String getNameFd() {
+        return nameFd;
     }
 
-    public int getFavoriteDirectionOwner() {
-        return FavoriteDirectionOwner;
-    }
-
-    public void setFavoriteDirectionOwner(int favoriteDirectionOwner) {
-        FavoriteDirectionOwner = favoriteDirectionOwner;
+    public void setNameFd(String nameFd) {
+        this.nameFd = nameFd;
     }
 }
