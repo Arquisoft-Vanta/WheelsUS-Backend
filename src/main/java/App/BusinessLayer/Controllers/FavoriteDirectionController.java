@@ -50,12 +50,10 @@ public class FavoriteDirectionController {
     }
     public FavoriteDirectionPOJO fillPOJO(FavoriteDirectionModel favoriteDirectionModel) {
         FavoriteDirectionPOJO favoriteDirection = new FavoriteDirectionPOJO();
-        favoriteDirection.setIdFavoriteDirection(favoriteDirectionModel.getIdFavDest());
         favoriteDirection.setDateTimeCreationFav(favoriteDirectionModel.getDatetimeCreationFav());
         favoriteDirection.setFavAddress(favoriteDirectionModel.getFavAddress());
         favoriteDirection.setFavLatitude(favoriteDirectionModel.getFavLatitude());
         favoriteDirection.setFavLongitude(favoriteDirectionModel.getFavLongitude());
-        favoriteDirection.setNameFd(favoriteDirectionModel.getNameFd());
         return favoriteDirection;
     }
 
@@ -64,7 +62,12 @@ public class FavoriteDirectionController {
         logger.error(pojo.toString());
         String username =
                 SecurityContextHolder.getContext().getAuthentication().getName();
+        logger.error(username);
         UserModel existingUser = userService.findByUserMail(username);
+        logger.error(existingUser.getIdUser()+"");
+        /*if (pojo.getNameFd().equals("") || pojo.getFavLongitude().equals("") || pojo.getFavLatitude().equals("") || pojo.getFavAddress().equals("")||pojo.getDateTimeCreationFav().equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }*/
         try {
             logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
             existingUser.addDirection(favoriteDirectionService.save(fillModel(pojo,existingUser.getIdUser())));
@@ -79,16 +82,30 @@ public class FavoriteDirectionController {
 
 
     @GetMapping("/show-directions")
-    public List<FavoriteDirectionPOJO> getDirectionsByUser() {
-        String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
-        UserModel user = userService.findByUserMail( username );
+    public List<FavoriteDirectionPOJO> getDirectiosByUser() {
+        String email =
+                SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+        UserModel user = userService.findByUserMail( email );
         List<FavoriteDirectionModel> favoriteDirectionModels = favoriteDirectionService.getDirectionsByUser(user);
         List<FavoriteDirectionPOJO> favoriteDirections = new ArrayList<>();
         for (FavoriteDirectionModel favoriteDirection : favoriteDirectionModels) {
             favoriteDirections.add(fillPOJO(favoriteDirection));
         }
-        logger.error(favoriteDirections.toString());
         return favoriteDirections;
     }
 
+
+        // PostMapping hace una peticion post a la ruta del controlador
+    /*@PostMapping("/createNewDirection")
+    public ResponseEntity<Void> create(@RequestBody FavoriteDirectionPOJO favoriteDirectionPOJO) {
+        if (favoriteDirectionPOJO.getFavAddress().equals("") || favoriteDirectionPOJO.getFavLatitude().equals("") || favoriteDirectionPOJO.getFavLongitude().equals("") || favoriteDirectionPOJO.getNameFd().equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        try {
+            favoriteDirectionService.save(fillModel(favoriteDirectionPOJO));
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }*/
 }

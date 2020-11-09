@@ -92,16 +92,23 @@ public class UserController {
     }*/
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
-    @GetMapping("/{userMail}")
-    public ResponseEntity<UserPOJO> findByUserMail(@PathVariable String userMail) {
+    @GetMapping("/profile")
+    public ResponseEntity<UserPOJO> findByUserMail() {
+
         try {
-            return ResponseEntity.ok(fillPOJO(userService.findByUserMail(userMail)));
+            String email =
+                    SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail( email );
+            return ResponseEntity.ok(fillPOJO(user));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e){
+            logger.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
 
@@ -126,12 +133,17 @@ public class UserController {
 
 
     // PutMapping hace una peticion put a la ruta del controlador
-    @PutMapping("/{id}")
+    @PutMapping("/profile")
     public ResponseEntity<Void> update(@RequestBody UserPOJO userPOJO) {
+
+
         try {
+            String email =
+                    SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail( email );
             // Busqueda de prueba para saber si el registro ya existe
             UserModel usuarioModel1 =
-                    userService.findById(userPOJO.getIdUser());
+                    userService.findById(user.getIdUser());
             userService.save(fillModel(userPOJO));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -146,7 +158,7 @@ public class UserController {
     }
 
     // DeleteMapping hace una peticion delete a la ruta del controlador
-    @DeleteMapping("/{id}")
+    /*@DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         try {
             userService.deleteById(id);
@@ -161,6 +173,6 @@ public class UserController {
 
         }
 
-    }
+    }*/
 
 }
