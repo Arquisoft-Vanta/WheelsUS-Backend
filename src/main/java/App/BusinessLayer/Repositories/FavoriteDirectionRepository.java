@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface FavoriteDirectionRepository extends CrudRepository<FavoriteDirectionModel, Integer> {
 
-    @Query("SELECT nameFd FROM FavoriteDirectionModel")
+    @Query("SELECT a FROM FavoriteDirectionModel a WHERE a.userModel = :user")
     List<FavoriteDirectionModel> getDirectionByUser(UserModel user);
 
 

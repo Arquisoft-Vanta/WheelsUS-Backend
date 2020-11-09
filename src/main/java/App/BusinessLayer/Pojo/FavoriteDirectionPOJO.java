@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 
 public class FavoriteDirectionPOJO {
 
+    private int idFavoriteDirection;
+
     private String favLatitude;
 
     private String favLongitude;
@@ -57,10 +59,6 @@ public class FavoriteDirectionPOJO {
                 '}';
     }
 
-    public void setDateTimeCreationFav(LocalDateTime dateTimeCreationFav) {
-        this.datetimeCreationFav = dateTimeCreationFav;
-    }
-
     public String getNameFd() {
         return nameFd;
     }
@@ -68,4 +66,17 @@ public class FavoriteDirectionPOJO {
     public void setNameFd(String nameFd) {
         this.nameFd = nameFd;
     }
+
+    public void setDateTimeCreationFav(LocalDateTime dateTimeCreationFav) {
+        this.datetimeCreationFav = dateTimeCreationFav;
+    }
+    public int getIdFavoriteDirection() {
+        return idFavoriteDirection;
+    }
+
+    public void setIdFavoriteDirection(int idFavoriteDirection) {
+        this.idFavoriteDirection = idFavoriteDirection;
+    }
+
+
 }
