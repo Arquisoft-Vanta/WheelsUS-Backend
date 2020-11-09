@@ -83,8 +83,9 @@ public class FavoriteDirectionController {
 
     @GetMapping("/show-directions")
     public List<FavoriteDirectionPOJO> getDirectiosByUser() {
-        String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
-        UserModel user = userService.findByUserMail( username );
+        String email =
+                SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+        UserModel user = userService.findByUserMail( email );
         List<FavoriteDirectionModel> favoriteDirectionModels = favoriteDirectionService.getDirectionsByUser(user);
         List<FavoriteDirectionPOJO> favoriteDirections = new ArrayList<>();
         for (FavoriteDirectionModel favoriteDirection : favoriteDirectionModels) {
