@@ -65,9 +65,6 @@ public class FavoriteDirectionController {
         String username =
                 SecurityContextHolder.getContext().getAuthentication().getName();
         UserModel existingUser = userService.findByUserMail(username);
-        /*if (pojo.getNameFd().equals("") || pojo.getFavLongitude().equals("") || pojo.getFavLatitude().equals("") || pojo.getFavAddress().equals("")||pojo.getDateTimeCreationFav().equals("")) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
         try {
             logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
             existingUser.addDirection(favoriteDirectionService.save(fillModel(pojo,existingUser.getIdUser())));
@@ -88,7 +85,6 @@ public class FavoriteDirectionController {
         List<FavoriteDirectionModel> favoriteDirectionModels = favoriteDirectionService.getDirectionsByUser(user);
         List<FavoriteDirectionPOJO> favoriteDirections = new ArrayList<>();
         for (FavoriteDirectionModel favoriteDirection : favoriteDirectionModels) {
-            //logger.error(favoriteDirection.toString());
             favoriteDirections.add(fillPOJO(favoriteDirection));
         }
         logger.error(favoriteDirections.toString());
