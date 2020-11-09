@@ -50,10 +50,12 @@ public class FavoriteDirectionController {
     }
     public FavoriteDirectionPOJO fillPOJO(FavoriteDirectionModel favoriteDirectionModel) {
         FavoriteDirectionPOJO favoriteDirection = new FavoriteDirectionPOJO();
+        favoriteDirection.setIdFavoriteDirection(favoriteDirectionModel.getIdFavDest());
         favoriteDirection.setDateTimeCreationFav(favoriteDirectionModel.getDatetimeCreationFav());
         favoriteDirection.setFavAddress(favoriteDirectionModel.getFavAddress());
         favoriteDirection.setFavLatitude(favoriteDirectionModel.getFavLatitude());
         favoriteDirection.setFavLongitude(favoriteDirectionModel.getFavLongitude());
+        favoriteDirection.setNameFd(favoriteDirectionModel.getNameFd());
         return favoriteDirection;
     }
 
@@ -65,9 +67,6 @@ public class FavoriteDirectionController {
         logger.error(username);
         UserModel existingUser = userService.findByUserMail(username);
         logger.error(existingUser.getIdUser()+"");
-        /*if (pojo.getNameFd().equals("") || pojo.getFavLongitude().equals("") || pojo.getFavLatitude().equals("") || pojo.getFavAddress().equals("")||pojo.getDateTimeCreationFav().equals("")) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
         try {
             logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
             existingUser.addDirection(favoriteDirectionService.save(fillModel(pojo,existingUser.getIdUser())));
@@ -94,18 +93,4 @@ public class FavoriteDirectionController {
         return favoriteDirections;
     }
 
-
-        // PostMapping hace una peticion post a la ruta del controlador
-    /*@PostMapping("/createNewDirection")
-    public ResponseEntity<Void> create(@RequestBody FavoriteDirectionPOJO favoriteDirectionPOJO) {
-        if (favoriteDirectionPOJO.getFavAddress().equals("") || favoriteDirectionPOJO.getFavLatitude().equals("") || favoriteDirectionPOJO.getFavLongitude().equals("") || favoriteDirectionPOJO.getNameFd().equals("")) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        try {
-            favoriteDirectionService.save(fillModel(favoriteDirectionPOJO));
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }*/
 }
