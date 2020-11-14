@@ -31,8 +31,8 @@ public class FavoriteDirectionModel {
     }
 
     @Id
-    @SequenceGenerator( name = "DIRECTION_DIRECTIONID_GENERATOR", sequenceName = "public.direction_direction_id_seq", allocationSize = 1 )
-    @GeneratedValue( generator = "DIRECTION_DIRECTIONID_GENERATOR", strategy = GenerationType.SEQUENCE )
+    //@SequenceGenerator( name = "DIRECTION_DIRECTIONID_GENERATOR", sequenceName = "public.direction_direction_id_seq", allocationSize = 1 )
+    //@GeneratedValue( generator = "DIRECTION_DIRECTIONID_GENERATOR", strategy = GenerationType.SEQUENCE )
     @Column( name = "id_fav_dest" )
     private int idFavDest;
 
