@@ -145,9 +145,7 @@
             </executions>
             <configuration>
                <driver>org.postgresql.Driver</driver>
-<!--
-               <url>jdbc:postgresql://localhost:5432/wheelsus-db</url>
--->
+               <url>${flyway.url}</url>
                <user>postgres</user>
                <password>admin</password>
                <baselineOnMigrate>true</baselineOnMigrate>
