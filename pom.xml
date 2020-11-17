@@ -145,7 +145,7 @@
             </executions>
             <configuration>
                <driver>org.postgresql.Driver</driver>
-               <url>${flyway.url}</url>
+               <url>jdbc:postgresql:///wheelsus-db-production?cloudSqlInstance=wheelsus:us-east1:wheelsus-db&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres&password=admin</url>
                <user>postgres</user>
                <password>admin</password>
                <baselineOnMigrate>true</baselineOnMigrate>
