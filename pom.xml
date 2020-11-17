@@ -169,7 +169,7 @@
         <!-- Use Spring Milestone Repository -->
         <repository>
             <id>repository.spring.milestone</id>
-            <name>Spring Milestones Repository</name>
+            <name>Spring Milestone Repository</name>
             <url>http://repo.spring.io/milestone</url>
         </repository>
     </repositories>
