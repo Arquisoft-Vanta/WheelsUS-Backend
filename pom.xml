@@ -146,8 +146,6 @@
             <configuration>
                <driver>org.postgresql.Driver</driver>
                <url>jdbc:postgresql:///wheelsus-db-production</url>
-                <socketFactory>com.google.cloud.sql.postgres.SocketFactory</socketFactory>
-                <cloudSqlInstance>wheelsus:us-east1:wheelsus-db</cloudSqlInstance>
                <user>postgres</user>
                <password>admin</password>
                <baselineOnMigrate>true</baselineOnMigrate>
