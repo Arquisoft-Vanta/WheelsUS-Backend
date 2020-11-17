@@ -1,6 +1,8 @@
 package App.BusinessLayer.Services;
 
 import App.BusinessLayer.Repositories.VehicleRepository;
+import App.DataLayer.Models.FavoriteDirectionModel;
+import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
@@ -32,5 +34,8 @@ public class VehicleService {
     public void deleteById(int id){
         vehicleRepository.deleteById(id);
     }
-    
+
+    public List<VehicleModel> getVehicleByUser(UserModel user ){
+        return vehicleRepository.getVehicleByUser( user);
+    }
 }

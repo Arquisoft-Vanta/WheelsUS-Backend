@@ -187,6 +187,9 @@ public class UserModel {
     public void addDirection(FavoriteDirectionModel direction ){
         directionModel.add( direction );
     }
+    public void addVehicle(VehicleModel vehicle ){
+        vehicleModel.add( vehicle );
+    }
 
 
     /*
