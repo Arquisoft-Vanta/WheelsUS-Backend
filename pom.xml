@@ -145,7 +145,7 @@
             </executions>
             <configuration>
                <driver>org.postgresql.Driver</driver>
-               <url>jdbc:postgresql:///wheelsus-db-production</url>
+               <url>jdbc:postgresql:///wheelsus-db-production==</url>
                <user>postgres</user>
                <password>admin</password>
                <baselineOnMigrate>true</baselineOnMigrate>
