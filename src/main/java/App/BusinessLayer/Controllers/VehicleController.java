@@ -141,8 +141,8 @@ public class VehicleController {
         }
     }*/
 
-    /*// PutMapping hace una peticion put a la ruta del controlador
-    @PutMapping("/{id}")
+    // PutMapping hace una peticion put a la ruta del controlador
+    /*@PutMapping("delete-vehicle/{id}")
     public ResponseEntity<Void> update(@RequestBody VehiclePOJO vehiclePOJO) {
         try {
             // Busqueda de prueba para saber si el registro ya existe
