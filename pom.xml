@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-maven-plugin</artifactId>
-            <version>7.0.0</version>
+            <version>7.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -96,7 +96,6 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>2.3.6.RELEASE</version>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -132,19 +131,6 @@
                   </goals>
                </execution>
             </executions>
-            <configuration>
-               <driver>org.postgresql.Driver</driver>
-               <url>jdbc:postgresql://localhost:5432/wheelsus-db</url>
-               <user>postgres</user>
-               <password>admin</password>
-               <baselineOnMigrate>true</baselineOnMigrate>
-               <schemas>public</schemas>
-               <locations>
-                  <location>
-                      filesystem:src/main/resources/db/migration
-                  </location>
-               </locations>
-            </configuration>
          </plugin>
         </plugins>
     </build>
