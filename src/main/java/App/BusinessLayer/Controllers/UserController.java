@@ -66,6 +66,41 @@ public class UserController {
         return user;
     }
 
+    public UserModel updateModel(UserPOJO userPOJO, UserModel user) {
+        if (userPOJO.getUserName()!=null) {
+            user.setUserName(userPOJO.getUserName());
+        }
+        if (userPOJO.getUserDoc() != null) {
+            user.setUserDoc(userPOJO.getUserDoc());
+        }
+        if (userPOJO.getUserPhone() != null) {
+            user.setUserPhone(userPOJO.getUserPhone());
+        }
+        if (userPOJO.getUniversityId() != user.getUniversityId()) {
+            user.setUniversityId(userPOJO.getUniversityId());
+        }
+        if (userPOJO.getUserMail() != null) {
+            user.setUserMail(userPOJO.getUserMail());
+        }
+
+        if(userPOJO.getUserAddress() != null) {
+            user.setUserAddress(userPOJO.getUserAddress());
+        }
+        if(userPOJO.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(userPOJO.getPassword()));
+        }
+        if(userPOJO.getRegistryDatetime() != null) {
+            user.setRegistryDatetime(userPOJO.getRegistryDatetime());
+        }
+        if(userPOJO.getPicture() != null) {
+            user.setPicture(userPOJO.getPicture());
+        }
+        if(userPOJO.getRh() != null) {
+            user.setRh(userPOJO.getRh());
+        }
+        return user;
+    }
+
     public UserPOJO fillPOJO(UserModel userModel) {
         UserPOJO user = new UserPOJO();
         user.setUserName(userModel.getUserName());
@@ -80,16 +115,6 @@ public class UserController {
         return user;
     }
 
-    // GetMapping obtiene valores en una sub ruta dada como parametro
-    //@GetMapping
-    /*public List<UserPOJO> findAll() {
-        List<UserPOJO> users = new ArrayList<>();
-        List<UserModel> userModels = userService.findAll();
-        for (UserModel user : userModels) {
-            users.add(fillPOJO(user));
-        }
-        return users;
-    }*/
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping("/profile")
@@ -141,10 +166,8 @@ public class UserController {
             String email =
                     SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
             UserModel user = userService.findByUserMail( email );
-            // Busqueda de prueba para saber si el registro ya existe
-            UserModel usuarioModel1 =
-                    userService.findById(user.getIdUser());
-            userService.save(fillModel(userPOJO));
+
+            userService.save(updateModel(userPOJO, user));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
