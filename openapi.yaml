@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
-  description: 'Endpoint del backend de Sigmath'
-  title: 'Sigmath Endpoint'
+  description: 'Endpoint del backend de WheelsUS'
+  title: 'WheelsUSZ Endpoint'
   version: '1.0.0'
 host: 'echo-api.endpoints.wheelsus.cloud.goog'
 x-google-endpoints:
@@ -14,4 +14,25 @@ produces:
 schemes:
   - 'https'
   - 'http'
+paths:
+  '/create-user':
+    post:
+      description: 'crear usuario'
+      operationId: 'insertCard'
+      produces:
+        - 'application/json'
+      parameters:
+        - description: 'Message to insertCard'
+          in: 'body'
+          name: 'message'
+          required: true
+          schema:
+            $ref: ''
+      responses:
+        200:
+          description: 'Success'
+          schema:
+            type: string
+        400:
+          description: 'Error'
 
