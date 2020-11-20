@@ -1,7 +1,11 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.FavoriteDirectionPOJO;
 import App.BusinessLayer.Pojo.VehiclePOJO;
+import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Services.VehicleService;
+import App.DataLayer.Models.FavoriteDirectionModel;
+import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 
 import java.util.ArrayList;
@@ -13,6 +17,7 @@ import org.springframework.boot.json.JsonParseException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,9 +54,16 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-    public VehicleModel fillModel(VehiclePOJO vehiclePOJO) {
+    private UserService userService;
+
+    public VehicleController(VehicleService vehicleService, UserService userService) {
+        this.vehicleService = vehicleService;
+        this.userService = userService;
+    }
+
+    public VehicleModel fillModel(VehiclePOJO vehiclePOJO,int idUser) {
         VehicleModel vehicle = new VehicleModel();
-        vehicle.setVehicleOwner(vehiclePOJO.getVehicleOwner());
+        vehicle.setVehicleOwner(idUser);
         vehicle.setVehicleLicenseplate(vehiclePOJO.getVehicleLicenseplate());
         vehicle.setVehicleType(vehiclePOJO.getVehicleType());
         vehicle.setVehicleModel(vehiclePOJO.getVehicleModel());
@@ -116,7 +128,7 @@ public class VehicleController {
 
     }
 
-    // PostMapping hace una peticion post a la ruta del controlador
+    /*// PostMapping hace una peticion post a la ruta del controlador
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody VehiclePOJO vehiclePOJO) {
         try {
@@ -127,10 +139,10 @@ public class VehicleController {
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
     // PutMapping hace una peticion put a la ruta del controlador
-    @PutMapping("/{id}")
+    /*@PutMapping("delete-vehicle/{id}")
     public ResponseEntity<Void> update(@RequestBody VehiclePOJO vehiclePOJO) {
         try {
             // Busqueda de prueba para saber si el registro ya existe
@@ -147,6 +159,42 @@ public class VehicleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
+    }*/
+
+    @PostMapping(value = {"/new-vehicle"})
+    public ResponseEntity<Void> addVehicleToUser(@RequestBody VehiclePOJO pojo) {
+        logger.error(pojo.toString());
+        String username =
+                SecurityContextHolder.getContext().getAuthentication().getName();
+        logger.error(username);
+        UserModel existingUser = userService.findByUserMail(username);
+        logger.error(existingUser.getIdUser()+"");
+        try {
+            logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
+            existingUser.addVehicle(vehicleService.save(fillModel(pojo,existingUser.getIdUser())));
+            //favoriteDirectionService.save(fillModel(pojo));
+            logger.trace(HttpStatus.CREATED.toString());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @GetMapping("/show-vehicles")
+    public List<VehiclePOJO> getVehicleByUser() {
+        String email =
+                SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+        logger.error(email);
+        UserModel user = userService.findByUserMail( email );
+        logger.error(user.getUserMail());
+        List<VehicleModel> vehicleModels = vehicleService.getVehicleByUser(user);
+        List<VehiclePOJO> vehicles = new ArrayList<>();
+        for (VehicleModel vehicle : vehicleModels) {
+            vehicles.add(fillPojo(vehicle));
+        }
+        return vehicles;
     }
 
     // DeleteMapping hace una peticion delete a la ruta del controlador
