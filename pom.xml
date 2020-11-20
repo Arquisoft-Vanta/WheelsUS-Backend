@@ -131,6 +131,19 @@
                   </goals>
                </execution>
             </executions>
+                <configuration>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/wheelsus-db</url>
+                    <user>postgres</user>
+                    <password>admin</password>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <schemas>public</schemas>
+                    <locations>
+                        <location>
+                            filesystem:src/main/resources/db/migration
+                        </location>
+                    </locations>
+                </configuration>
          </plugin>
         </plugins>
     </build>
