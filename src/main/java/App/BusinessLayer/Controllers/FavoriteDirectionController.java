@@ -7,6 +7,7 @@ import App.BusinessLayer.Services.FavoriteDirectionService;
 import App.BusinessLayer.Services.UserService;
 import App.DataLayer.Models.FavoriteDirectionModel;
 import App.DataLayer.Models.UserModel;
+import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.persistence.EntityNotFoundException;
 
 @RestController
 // RequestMapping atiende las peticiones en la ruta dada por parametro
@@ -61,16 +64,12 @@ public class FavoriteDirectionController {
 
     @PostMapping(value = {"/new-direction"})
     public ResponseEntity<Void> addDirectionToUser(@RequestBody FavoriteDirectionPOJO pojo) {
-        logger.error(pojo.toString());
         String username =
                 SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.error(username);
         UserModel existingUser = userService.findByUserMail(username);
-        logger.error(existingUser.getIdUser()+"");
         try {
             logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
             existingUser.addDirection(favoriteDirectionService.save(fillModel(pojo,existingUser.getIdUser())));
-            //favoriteDirectionService.save(fillModel(pojo));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
@@ -79,6 +78,19 @@ public class FavoriteDirectionController {
         }
     }
 
+    @PostMapping(value = {"/delete-direction"})
+    public ResponseEntity<Void> deleteDirectionvyUser(@RequestBody FavoriteDirectionPOJO pojo) {
+        String username =
+                SecurityContextHolder.getContext().getAuthentication().getName();
+        try {
+            favoriteDirectionService.deleteById(pojo.getIdFavoriteDirection());
+            return new ResponseEntity<>(HttpStatus.CONTINUE);
+        } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }
+    }
 
     @GetMapping("/show-directions")
     public List<FavoriteDirectionPOJO> getDirectiosByUser() {
