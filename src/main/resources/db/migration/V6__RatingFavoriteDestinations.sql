@@ -34,7 +34,7 @@ create table RATING (
    GRADER               INT4                 null,
    GRADED               INT4                 not null,
    GRADE                INT2                 null,
-   RIDE_ID              INT4                 not null,
+   RIDE_ID              VARCHAR(50)          not null,
    constraint PK_RATING primary key (ID_RATING)
 );
 
