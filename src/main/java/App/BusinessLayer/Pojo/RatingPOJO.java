@@ -4,9 +4,9 @@ public class RatingPOJO {
     private int idRating;
 
 
-    private int grader;
+    private String grader;
 
-    private int graded;
+    private String graded;
 
     private byte grade;
 
@@ -20,19 +20,19 @@ public class RatingPOJO {
         this.idRating = idRating;
     }
 
-    public int getGrader() {
+    public String getGrader() {
         return grader;
     }
 
-    public void setGrader(int grader) {
+    public void setGrader(String grader) {
         this.grader = grader;
     }
 
-    public int getGraded() {
+    public String getGraded() {
         return graded;
     }
 
-    public void setGraded(int graded) {
+    public void setGraded(String graded) {
         this.graded = graded;
     }
 

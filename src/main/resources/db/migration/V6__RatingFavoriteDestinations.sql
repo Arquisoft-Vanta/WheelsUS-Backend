@@ -30,7 +30,7 @@ ID_USER_FAV
 /* Table: RATING                                                */
 /*==============================================================*/
 create table RATING (
-   ID_RATING            INT4                 not null,
+   ID_RATING            SERIAL                 not null,
    GRADER               INT4                 null,
    GRADED               INT4                 not null,
    GRADE                INT2                 null,

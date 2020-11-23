@@ -39,8 +39,11 @@ public class RatingController {
     public RatingModel fillModel(RatingPOJO ratingPOJO) {
         RatingModel ratingModel = new RatingModel();
         ratingModel.setGrade(ratingPOJO.getGrade());
-        ratingModel.setGraded(ratingPOJO.getGraded());
-        ratingModel.setGrader(ratingPOJO.getGrader());
+        int graded = userService.findByUserMail(ratingPOJO.getGraded()).getIdUser();
+        ratingModel.setGraded(graded);
+        int grader =
+                userService.findByUserMail(ratingPOJO.getGrader()).getIdUser();
+        ratingModel.setGrader(grader);
         ratingModel.setRideId(ratingPOJO.getRideId());
         return ratingModel;
     }
@@ -48,8 +51,8 @@ public class RatingController {
     public RatingPOJO fillPOJO(RatingModel ratingModel) {
         RatingPOJO ratingPOJO = new RatingPOJO();
         ratingPOJO.setGrade(ratingModel.getGrade());
-        ratingPOJO.setGraded(ratingModel.getGraded());
-        ratingPOJO.setGrader(ratingModel.getGrader());
+        ratingPOJO.setGraded(userService.findById(ratingModel.getGraded()).getUserMail());
+        ratingPOJO.setGrader(userService.findById(ratingModel.getGrader()).getUserMail());
         ratingPOJO.setRideId(ratingModel.getRideId());
         return ratingPOJO;
     }
@@ -95,6 +98,7 @@ public class RatingController {
             return new ResponseEntity<>(HttpStatus.CREATED);
 
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
