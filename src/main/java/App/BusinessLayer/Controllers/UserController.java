@@ -8,8 +8,11 @@ import App.DataLayer.Models.FavoriteDirectionModel;
 import App.DataLayer.Models.UserModel;
 import org.springframework.boot.json.JsonParseException;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.xml.soap.Text;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -179,6 +183,16 @@ public class UserController {
             }
 
             UserModel user = userService.findByUserMail( email );
+            String imgSelected = userPOJO.getPicture();
+
+            if (imgSelected != ""){
+                String fileAddress = email + ".txt";
+                File myObj = new File("C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + fileAddress );
+                FileWriter wrt = new FileWriter(fileAddress);
+                wrt.write(imgSelected);
+                wrt.close();
+                userPOJO.setPicture(fileAddress);
+            }
 
             userService.save(updateModel(userPOJO, user));
             logger.trace(HttpStatus.CREATED.toString());
@@ -190,6 +204,9 @@ public class UserController {
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
