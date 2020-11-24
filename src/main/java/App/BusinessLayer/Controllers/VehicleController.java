@@ -56,11 +56,12 @@ public class VehicleController {
 
     private UserService userService;
 
-    public VehicleController(VehicleService vehicleService, UserService userService) {
+    public VehicleController(VehicleService vehicleService,
+                             UserService userService) {
         this.vehicleService = vehicleService;
         this.userService = userService;
     }
-
+/*
     public VehicleModel fillModel(VehiclePOJO vehiclePOJO,int idUser) {
         VehicleModel vehicle = new VehicleModel();
         vehicle.setVehicleOwner(idUser);
@@ -69,13 +70,15 @@ public class VehicleController {
         vehicle.setVehicleModel(vehiclePOJO.getVehicleModel());
         vehicle.setVehicleYear(vehiclePOJO.getVehicleYear());
         vehicle.setVehicleColor(vehiclePOJO.getVehicleColor());
-        vehicle.setVehicleRegistryDatetime(vehiclePOJO.getVehicleRegistryDatetime());
+        vehicle.setVehicleRegistryDatetime(vehiclePOJO
+        .getVehicleRegistryDatetime());
         vehicle.setVehiclePicture(vehiclePOJO.getVehiclePicture());
         vehicle.setVehicleCapacity(vehiclePOJO.getVehicleCapacity());
         vehicle.setVehicleBrand(vehiclePOJO.getVehicleBrand());
         vehicle.setVehicleServiceType(vehiclePOJO.getVehicleServiceType());
         vehicle.setVehicleBody(vehiclePOJO.getVehicleBody());
-        vehicle.setVehicleSoatExpiration(vehiclePOJO.getVehicleSoatExpiration());
+        vehicle.setVehicleSoatExpiration(vehiclePOJO.getVehicleSoatExpiration
+        ());
         vehicle.setVehicleEngine(vehiclePOJO.getVehicleEngine());
         vehicle.setVehicleGasType(vehiclePOJO.getVehicleGasType());
         return vehicle;
@@ -89,17 +92,19 @@ public class VehicleController {
         vehicle.setVehicleModel(vehicleModel.getVehicleModel());
         vehicle.setVehicleYear(vehicleModel.getVehicleYear());
         vehicle.setVehicleColor(vehicleModel.getVehicleColor());
-        vehicle.setVehicleRegistryDatetime(vehicleModel.getVehicleRegistryDatetime());
+        vehicle.setVehicleRegistryDatetime(vehicleModel
+        .getVehicleRegistryDatetime());
         vehicle.setVehiclePicture(vehicleModel.getVehiclePicture());
         vehicle.setVehicleCapacity(vehicleModel.getVehicleCapacity());
         vehicle.setVehicleBrand(vehicleModel.getVehicleBrand());
         vehicle.setVehicleServiceType(vehicleModel.getVehicleServiceType());
         vehicle.setVehicleBody(vehicleModel.getVehicleBody());
-        vehicle.setVehicleSoatExpiration(vehicleModel.getVehicleSoatExpiration());
+        vehicle.setVehicleSoatExpiration(vehicleModel
+        .getVehicleSoatExpiration());
         vehicle.setVehicleEngine(vehicleModel.getVehicleEngine());
         vehicle.setVehicleGasType(vehicleModel.getVehicleGasType());
         return vehicle;
-    }
+    }*/
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
     @GetMapping
@@ -107,7 +112,7 @@ public class VehicleController {
         List<VehiclePOJO> vehiclePOJOS = new ArrayList<>();
         List<VehicleModel> vehicleModels = vehicleService.findAll();
         for (VehicleModel vehicleModel : vehicleModels) {
-            vehiclePOJOS.add(fillPojo(vehicleModel));
+            vehiclePOJOS.add(new VehiclePOJO(vehicleModel));
         }
         return vehiclePOJOS;
     }
@@ -116,7 +121,7 @@ public class VehicleController {
     @GetMapping("/{id}")
     public ResponseEntity<VehiclePOJO> findById(@PathVariable int id) {
         try {
-            return ResponseEntity.ok(fillPojo(vehicleService.findById(id)));
+            return ResponseEntity.ok(new VehiclePOJO(vehicleService.findById(id)));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -168,10 +173,10 @@ public class VehicleController {
                 SecurityContextHolder.getContext().getAuthentication().getName();
         logger.error(username);
         UserModel existingUser = userService.findByUserMail(username);
-        logger.error(existingUser.getIdUser()+"");
+        logger.error(existingUser.getIdUser() + "");
         try {
-            logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
-            existingUser.addVehicle(vehicleService.save(fillModel(pojo,existingUser.getIdUser())));
+            logger.error(pojo.getModel(existingUser.getIdUser()).toString());
+            existingUser.addVehicle(vehicleService.save(pojo.getModel(existingUser.getIdUser())));
             //favoriteDirectionService.save(fillModel(pojo));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -185,14 +190,15 @@ public class VehicleController {
     @GetMapping("/show-vehicles")
     public List<VehiclePOJO> getVehicleByUser() {
         String email =
-                SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+                SecurityContextHolder.getContext().getAuthentication().getName();
         logger.error(email);
-        UserModel user = userService.findByUserMail( email );
+        UserModel user = userService.findByUserMail(email);
         logger.error(user.getUserMail());
-        List<VehicleModel> vehicleModels = vehicleService.getVehicleByUser(user);
+        List<VehicleModel> vehicleModels =
+                vehicleService.getVehicleByUser(user);
         List<VehiclePOJO> vehicles = new ArrayList<>();
         for (VehicleModel vehicle : vehicleModels) {
-            vehicles.add(fillPojo(vehicle));
+            vehicles.add(new VehiclePOJO(vehicle));
         }
         return vehicles;
     }

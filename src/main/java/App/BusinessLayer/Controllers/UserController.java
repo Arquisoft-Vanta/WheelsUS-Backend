@@ -55,7 +55,7 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
         this.ratingService = ratingService;
     }
-
+/*
     public UserModel fillModel(UserPOJO userPOJO) {
         UserModel user = new UserModel();
         user.setUserName(userPOJO.getUserName());
@@ -70,7 +70,6 @@ public class UserController {
         user.setRh(userPOJO.getRh());
         return user;
     }
-
     public UserModel updateModel(UserPOJO userPOJO, UserModel user) {
         if (userPOJO.getUserName()!=null) {
             user.setUserName(userPOJO.getUserName());
@@ -105,8 +104,7 @@ public class UserController {
         }
         return user;
     }
-
-    public UserPOJO fillPOJO(UserModel userModel) {
+     public UserPOJO fillPOJO(UserModel userModel) {
         UserPOJO user = new UserPOJO();
         user.setUserName(userModel.getUserName());
         user.setUserDoc(userModel.getUserDoc());
@@ -118,7 +116,7 @@ public class UserController {
         user.setPicture(userModel.getPicture());
         user.setRh(userModel.getRh());
         return user;
-    }
+    }*/
 
 
     // GetMapping obtiene valores en una sub ruta dada como parametro
@@ -135,7 +133,7 @@ public class UserController {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             UserModel user = userService.findByUserMail( email );
-            return ResponseEntity.ok(fillPOJO(user));
+            return ResponseEntity.ok(new UserPOJO(user));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -192,7 +190,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         try {
-            userService.save(fillModel(userPOJO));
+            userService.save(userPOJO.getModel(passwordEncoder));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
@@ -219,7 +217,9 @@ public class UserController {
 
             UserModel user = userService.findByUserMail( email );
 
-            userService.save(updateModel(userPOJO, user));
+            userService.save(userPOJO.updateModel(passwordEncoder, user));
+            //updateModel(userPOJO,
+            // user));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 
