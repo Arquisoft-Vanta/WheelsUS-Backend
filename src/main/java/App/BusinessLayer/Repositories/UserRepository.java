@@ -7,6 +7,7 @@ package App.BusinessLayer.Repositories;
 
 
 import App.DataLayer.Models.UserModel;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends CrudRepository<UserModel, Integer> {
 
+    @Query("SELECT u FROM UserModel u WHERE u.userMail = :userMail")
     UserModel findByuserMail( String userMail );
 }

@@ -1,5 +1,6 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.FastProfilePOJO;
 import App.BusinessLayer.Pojo.RatingPOJO;
 import App.BusinessLayer.Pojo.UserRatingPOJO;
 import App.BusinessLayer.Services.RatingService;
@@ -76,7 +77,7 @@ public class RatingController {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             UserModel user = userService.findByUserMail(userEmail);
-            float rating = ratingService.findBygraded(user.getIdUser());
+            float rating = ratingService.getAverageRating(user.getIdUser());
             return ResponseEntity.ok(fillUserRating(rating));
 
 
@@ -88,6 +89,7 @@ public class RatingController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody RatingPOJO ratingPOJO) {

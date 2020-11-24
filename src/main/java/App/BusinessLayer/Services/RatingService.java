@@ -25,7 +25,8 @@ public class RatingService {
         return ratingRepository.save(ratingModel);
     }
 
-    public float findBygraded(Integer id){
+    public float getAverageRating(Integer id){
+        logger.info("Id average: "+String.valueOf(id));
         ArrayList<RatingModel> ratingModels = (ArrayList<RatingModel>) ratingRepository.findBygraded(id);
         float sum = 0;
         for (RatingModel ratingModel : ratingModels) {
