@@ -120,8 +120,14 @@ public class UserController {
     public ResponseEntity<UserPOJO> findByUserMail() {
 
         try {
-            String email =
-                    SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            String email = "";
+            try {
+                email =
+                        SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            }catch (EntityNotFoundException e){
+                logger.error(HttpStatus.UNAUTHORIZED.toString());
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
             UserModel user = userService.findByUserMail( email );
             return ResponseEntity.ok(fillPOJO(user));
         } catch (JsonParseException e) {
@@ -162,8 +168,15 @@ public class UserController {
 
 
         try {
-            String email =
-                    SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            String email = "";
+            try {
+                 email =
+                        SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            }catch (EntityNotFoundException e){
+                logger.error(HttpStatus.UNAUTHORIZED.toString());
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+
             UserModel user = userService.findByUserMail( email );
             logger.error(userPOJO.getPicture() + "");
             String nuevaRuta = "Estaesmiruta.txt";

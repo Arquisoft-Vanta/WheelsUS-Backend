@@ -22,7 +22,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     private static final String[] AUTHORIZED_GRANT_TYPES = new String[]{ "client_credentials", "password" };
     private static final String[] SCOPES = new String[]{ "read", "write", "trust" };
     private static final String[] RESOURCE_IDS = new String[] { "oauth2-resource" };
-    private static final int ACCESS_TOKEN_VALIDITY_SECONDS = 1600;
+    private static final int ACCESS_TOKEN_VALIDITY_SECONDS = 2592000;
 
 
     private final AuthenticationManager authenticationManager;
