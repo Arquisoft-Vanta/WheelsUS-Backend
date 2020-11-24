@@ -1,5 +1,8 @@
 package App.BusinessLayer.Pojo;
 
+import App.BusinessLayer.Services.UserService;
+import App.DataLayer.Models.RatingModel;
+
 public class RatingPOJO {
     private int idRating;
 
@@ -11,6 +14,9 @@ public class RatingPOJO {
     private byte grade;
 
     private String rideId;
+
+    public RatingPOJO() {
+    }
 
     public int getIdRating() {
         return idRating;
@@ -51,4 +57,24 @@ public class RatingPOJO {
     public void setRideId(String rideId) {
         this.rideId = rideId;
     }
+
+    public RatingModel getModel(UserService userService) {
+        RatingModel ratingModel = new RatingModel();
+        ratingModel.setGrade(getGrade());
+        int graded = userService.findByUserMail(getGraded()).getIdUser();
+        ratingModel.setGraded(graded);
+        int grader = userService.findByUserMail(getGrader()).getIdUser();
+        ratingModel.setGrader(grader);
+        ratingModel.setRideId(getRideId());
+        return ratingModel;
+    }
+
+    public RatingPOJO(UserService userService, RatingModel ratingModel) {
+        setGrade(ratingModel.getGrade());
+        setGraded(userService.findById(ratingModel.getGraded()).getUserMail());
+        setGrader(userService.findById(ratingModel.getGrader()).getUserMail());
+        setRideId(ratingModel.getRideId());
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package App.BusinessLayer.Pojo;
 
+import App.DataLayer.Models.VehicleModel;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 
@@ -35,6 +37,8 @@ public class VehiclePOJO {
     private int vehicleEngine;
 
     private String vehicleGasType;
+
+    public VehiclePOJO() {}
 
     public int getIdVehicle() {
         return idVehicle;
@@ -162,5 +166,43 @@ public class VehiclePOJO {
 
     public void setVehicleGasType(String vehicleGasType) {
         this.vehicleGasType = vehicleGasType;
+    }
+
+    public VehicleModel getModel( int idUser) {
+        VehicleModel vehicle = new VehicleModel();
+        vehicle.setVehicleOwner(idUser);
+        vehicle.setVehicleLicenseplate(getVehicleLicenseplate());
+        vehicle.setVehicleType(getVehicleType());
+        vehicle.setVehicleModel(getVehicleModel());
+        vehicle.setVehicleYear(getVehicleYear());
+        vehicle.setVehicleColor(getVehicleColor());
+        vehicle.setVehicleRegistryDatetime(getVehicleRegistryDatetime());
+        vehicle.setVehiclePicture(getVehiclePicture());
+        vehicle.setVehicleCapacity(getVehicleCapacity());
+        vehicle.setVehicleBrand(getVehicleBrand());
+        vehicle.setVehicleServiceType(getVehicleServiceType());
+        vehicle.setVehicleBody(getVehicleBody());
+        vehicle.setVehicleSoatExpiration(getVehicleSoatExpiration());
+        vehicle.setVehicleEngine(getVehicleEngine());
+        vehicle.setVehicleGasType(getVehicleGasType());
+        return vehicle;
+    }
+
+    public VehiclePOJO (VehicleModel vehicleModel) {
+        setVehicleOwner(vehicleModel.getVehicleOwner());
+        setVehicleLicenseplate(vehicleModel.getVehicleLicenseplate());
+        setVehicleType(vehicleModel.getVehicleType());
+        setVehicleModel(vehicleModel.getVehicleModel());
+        setVehicleYear(vehicleModel.getVehicleYear());
+        setVehicleColor(vehicleModel.getVehicleColor());
+        setVehicleRegistryDatetime(vehicleModel.getVehicleRegistryDatetime());
+        setVehiclePicture(vehicleModel.getVehiclePicture());
+        setVehicleCapacity(vehicleModel.getVehicleCapacity());
+        setVehicleBrand(vehicleModel.getVehicleBrand());
+        setVehicleServiceType(vehicleModel.getVehicleServiceType());
+        setVehicleBody(vehicleModel.getVehicleBody());
+        setVehicleSoatExpiration(vehicleModel.getVehicleSoatExpiration());
+        setVehicleEngine(vehicleModel.getVehicleEngine());
+        setVehicleGasType(vehicleModel.getVehicleGasType());
     }
 }

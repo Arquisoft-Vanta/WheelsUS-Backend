@@ -10,4 +10,10 @@ public class UserRatingPOJO {
     public void setRating(float rating) {
         this.rating = rating;
     }
+
+    public UserRatingPOJO() {}
+
+    public UserRatingPOJO(float rating) {
+        setRating(rating);
+    }
 }
