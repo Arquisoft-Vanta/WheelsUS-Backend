@@ -82,7 +82,6 @@ public class UserController {
         if (userPOJO.getUserMail() != null) {
             user.setUserMail(userPOJO.getUserMail());
         }
-
         if(userPOJO.getUserAddress() != null) {
             user.setUserAddress(userPOJO.getUserAddress());
         }
@@ -166,7 +165,10 @@ public class UserController {
             String email =
                     SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
             UserModel user = userService.findByUserMail( email );
-
+            logger.error(userPOJO.getPicture() + "");
+            String nuevaRuta = "Estaesmiruta.txt";
+            userPOJO.setPicture(nuevaRuta);
+            logger.error(userPOJO.getPicture());
             userService.save(updateModel(userPOJO, user));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
