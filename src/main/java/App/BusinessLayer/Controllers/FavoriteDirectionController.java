@@ -40,7 +40,7 @@ public class FavoriteDirectionController {
         this.favoriteDirectionService = favoriteDirectionService;
         this.userService = userService;
     }
-
+/*
     public FavoriteDirectionModel fillModel(FavoriteDirectionPOJO favoriteDirectionPOJO,int idUser) {
         FavoriteDirectionModel favoriteDirection = new FavoriteDirectionModel();
         favoriteDirection.setIdUserFav(idUser);
@@ -60,7 +60,7 @@ public class FavoriteDirectionController {
         favoriteDirection.setFavLongitude(favoriteDirectionModel.getFavLongitude());
         favoriteDirection.setNameFd(favoriteDirectionModel.getNameFd());
         return favoriteDirection;
-    }
+    }*/
 
     @PostMapping(value = {"/new-direction"})
     public ResponseEntity<Void> addDirectionToUser(@RequestBody FavoriteDirectionPOJO pojo) {
@@ -68,8 +68,10 @@ public class FavoriteDirectionController {
                 SecurityContextHolder.getContext().getAuthentication().getName();
         UserModel existingUser = userService.findByUserMail(username);
         try {
-            logger.error(fillModel(pojo,existingUser.getIdUser()).toString());
-            existingUser.addDirection(favoriteDirectionService.save(fillModel(pojo,existingUser.getIdUser())));
+            logger.error(pojo.getModel(existingUser.getIdUser()).toString());
+            //fillModel(pojo,existingUser.getIdUser())
+            // .toString());
+            existingUser.addDirection(favoriteDirectionService.save(pojo.getModel(existingUser.getIdUser())));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
@@ -100,7 +102,7 @@ public class FavoriteDirectionController {
         List<FavoriteDirectionModel> favoriteDirectionModels = favoriteDirectionService.getDirectionsByUser(user);
         List<FavoriteDirectionPOJO> favoriteDirections = new ArrayList<>();
         for (FavoriteDirectionModel favoriteDirection : favoriteDirectionModels) {
-            favoriteDirections.add(fillPOJO(favoriteDirection));
+            favoriteDirections.add(new FavoriteDirectionPOJO(favoriteDirection));
         }
         return favoriteDirections;
     }

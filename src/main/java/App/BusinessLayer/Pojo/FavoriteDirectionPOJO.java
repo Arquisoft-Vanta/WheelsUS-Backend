@@ -1,5 +1,6 @@
 package App.BusinessLayer.Pojo;
 
+import App.DataLayer.Models.FavoriteDirectionModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,9 @@ public class FavoriteDirectionPOJO {
 
     private String nameFd;
 
+    public FavoriteDirectionPOJO(){
+
+    }
 
     public String getFavLatitude() {
         return favLatitude;
@@ -78,5 +82,22 @@ public class FavoriteDirectionPOJO {
         this.idFavoriteDirection = idFavoriteDirection;
     }
 
-
+    public FavoriteDirectionModel getModel(int idUser) {
+        FavoriteDirectionModel favoriteDirection = new FavoriteDirectionModel();
+        favoriteDirection.setIdUserFav(idUser);
+        favoriteDirection.setFavAddress(getFavAddress());
+        favoriteDirection.setFavLatitude(getFavLatitude());
+        favoriteDirection.setFavLongitude(getFavLongitude());
+        favoriteDirection.setDatetimeCreationFav(getDateTimeCreationFav());
+        favoriteDirection.setNameFd(getNameFd());
+        return favoriteDirection;
+    }
+    public FavoriteDirectionPOJO (FavoriteDirectionModel favoriteDirectionModel) {
+        setIdFavoriteDirection(favoriteDirectionModel.getIdFavDest());
+        setDateTimeCreationFav(favoriteDirectionModel.getDatetimeCreationFav());
+        setFavAddress(favoriteDirectionModel.getFavAddress());
+        setFavLatitude(favoriteDirectionModel.getFavLatitude());
+        setFavLongitude(favoriteDirectionModel.getFavLongitude());
+        setNameFd(favoriteDirectionModel.getNameFd());
+    }
 }

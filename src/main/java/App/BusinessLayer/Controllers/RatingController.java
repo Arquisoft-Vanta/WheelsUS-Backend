@@ -1,5 +1,6 @@
 package App.BusinessLayer.Controllers;
 
+import App.BusinessLayer.Pojo.FastProfilePOJO;
 import App.BusinessLayer.Pojo.RatingPOJO;
 import App.BusinessLayer.Pojo.UserRatingPOJO;
 import App.BusinessLayer.Services.RatingService;
@@ -35,7 +36,7 @@ public class RatingController {
         this.ratingService = ratingService;
         this.userService = userService;
     }
-
+/*
     public RatingModel fillModel(RatingPOJO ratingPOJO) {
         RatingModel ratingModel = new RatingModel();
         ratingModel.setGrade(ratingPOJO.getGrade());
@@ -61,7 +62,7 @@ public class RatingController {
         UserRatingPOJO userRatingPOJO = new UserRatingPOJO();
         userRatingPOJO.setRating(rating);
         return userRatingPOJO;
-    }
+    }*/
 
     // Obtener la calificacion numerica de un usuario basado en su correo
     @GetMapping
@@ -76,8 +77,8 @@ public class RatingController {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             UserModel user = userService.findByUserMail(userEmail);
-            float rating = ratingService.findBygraded(user.getIdUser());
-            return ResponseEntity.ok(fillUserRating(rating));
+            float rating = ratingService.getAverageRating(user.getIdUser());
+            return ResponseEntity.ok(new UserRatingPOJO(rating));
 
 
         } catch (JsonParseException e) {
@@ -89,11 +90,12 @@ public class RatingController {
         }
     }
 
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody RatingPOJO ratingPOJO) {
 
         try {
-            ratingService.save(fillModel(ratingPOJO));
+            ratingService.save(ratingPOJO.getModel(userService));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
 

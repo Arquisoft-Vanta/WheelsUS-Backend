@@ -1,6 +1,8 @@
 package App.BusinessLayer.Pojo;
 
+import App.DataLayer.Models.UserModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import java.time.LocalDateTime;
@@ -119,4 +121,68 @@ public class UserPOJO {
     public void setRh(String rh) {
         Rh = rh;
     }
+
+    public UserModel getModel(PasswordEncoder passwordEncoder) {
+        UserModel user = new UserModel();
+        user.setUserName(getUserName());
+        user.setUserDoc(getUserDoc());
+        user.setUserPhone(getUserPhone());
+        user.setUniversityId(getUniversityId());
+        user.setUserMail(getUserMail());
+        user.setUserAddress(getUserAddress());
+        user.setPassword(passwordEncoder.encode(getPassword()));
+        user.setRegistryDatetime(getRegistryDatetime());
+        user.setPicture(getPicture());
+        user.setRh(getRh());
+        return user;
+    }
+
+    public UserModel updateModel(PasswordEncoder passwordEncoder,
+                                 UserModel user) {
+        if (getUserName() != null) {
+            user.setUserName(getUserName());
+        }
+        if (getUserDoc() != null) {
+            user.setUserDoc(getUserDoc());
+        }
+        if (getUserPhone() != null) {
+            user.setUserPhone(getUserPhone());
+        }
+        if (getUniversityId() != user.getUniversityId()) {
+            user.setUniversityId(getUniversityId());
+        }
+        if (getUserMail() != null) {
+            user.setUserMail(getUserMail());
+        }
+
+        if (getUserAddress() != null) {
+            user.setUserAddress(getUserAddress());
+        }
+        if (getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(getPassword()));
+        }
+        if (getRegistryDatetime() != null) {
+            user.setRegistryDatetime(getRegistryDatetime());
+        }
+        if (getPicture() != null) {
+            user.setPicture(getPicture());
+        }
+        if (getRh() != null) {
+            user.setRh(getRh());
+        }
+        return user;
+    }
+
+    public UserPOJO(UserModel userModel) {
+        setUserName(userModel.getUserName());
+        setUserDoc(userModel.getUserDoc());
+        setUserPhone(userModel.getUserPhone());
+        setUniversityId(userModel.getUniversityId());
+        setUserMail(userModel.getUserMail());
+        setUserAddress(userModel.getUserAddress());
+        setRegistryDatetime(userModel.getRegistryDatetime());
+        setPicture(userModel.getPicture());
+        setRh(userModel.getRh());
+    }
+
 }
