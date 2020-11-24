@@ -187,11 +187,25 @@ public class UserController {
 
             if (imgSelected != ""){
                 String fileAddress = email + ".txt";
-                File myObj = new File("C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + fileAddress );
-                FileWriter wrt = new FileWriter(fileAddress);
-                wrt.write(imgSelected);
-                wrt.close();
-                userPOJO.setPicture(fileAddress);
+
+                String os = System.getProperty("os.name");
+                logger.error(os);
+
+                /*if (os == "windows"){
+                    File myObj = new File("..\\..\\..\\pictures\\profile\\" + fileAddress );
+                    FileWriter wrt = new FileWriter(fileAddress);
+                    wrt.write(imgSelected);
+                    wrt.close();
+                    userPOJO.setPicture(fileAddress);
+
+                }else{
+                    File myObj = new File("../../../pictures/profile/" + fileAddress );
+                    FileWriter wrt = new FileWriter(fileAddress);
+                    wrt.write(imgSelected);
+                    wrt.close();
+                    userPOJO.setPicture(fileAddress);
+                }*/
+
             }
 
             userService.save(updateModel(userPOJO, user));
@@ -204,10 +218,10 @@ public class UserController {
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (IOException e) {
+        } /*catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        }*/
     }
 
     // DeleteMapping hace una peticion delete a la ruta del controlador
