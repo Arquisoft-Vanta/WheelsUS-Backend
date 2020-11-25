@@ -12,7 +12,7 @@ public class VehiclePOJO {
 
     private String vehicleLicenseplate;
 
-    private int vehicleType;
+    private String vehicleType;
 
     private String vehicleModel;
 
@@ -64,11 +64,11 @@ public class VehiclePOJO {
         this.vehicleLicenseplate = vehicleLicenseplate;
     }
 
-    public int getVehicleType() {
+    public String getVehicleType() {
         return vehicleType;
     }
 
-    public void setVehicleType(int vehicleType) {
+    public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
     }
 

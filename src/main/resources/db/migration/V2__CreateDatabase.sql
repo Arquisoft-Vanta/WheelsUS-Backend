@@ -8,15 +8,14 @@
 /*==============================================================*/
 create table vehicle (
    ID_VEHICLE           SERIAL		     not null,
-   ID_VEHICLE_TYPE      INT4                 null,
    VEHICLE_OWNER        INT4                 not null,
    VEHICLE_LICENSEPLATE VARCHAR(10)          not null,
-   VEHICLE_TYPE         INT4                 not null,
+   VEHICLE_TYPE         VARCHAR(25)           not null,
    VEHICLE_MODEL        VARCHAR(50)          not null,
    VEHICLE_YEAR         INT4                 not null,
    VEHICLE_COLOR        VARCHAR(50)          not null,
    VEHICLE_REGISTRY_DATETIME TIMESTAMP                 not null,
-   VEHICLE_PICTURE      VARCHAR(50)          not null,
+   VEHICLE_PICTURE      VARCHAR(150)          null,
    VEHICLE_CAPACITY     INT4                 not null,
    constraint PK_VEHICLE primary key (ID_VEHICLE)
 );
@@ -41,7 +40,7 @@ create table "user" (
    USER_ADDRESS         VARCHAR(50)          null,
    PASSWORD             VARCHAR(50)          not null,
    REGISTRY_DATETIME    TIMESTAMP	     not null,
-   PICTURE              VARCHAR(50)          null,
+   PICTURE              VARCHAR(150)          null,
    RH                   VARCHAR(50)          null,
    constraint PK_USER primary key (ID_USER)
 );

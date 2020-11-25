@@ -35,7 +35,7 @@ public class VehicleModel{
 
     }
     
-    public VehicleModel(int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
+    public VehicleModel(int vehicleOwner, String vehicleLicenseplate, String vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
     
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
@@ -55,7 +55,7 @@ public class VehicleModel{
         
     }
     
-    public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, int vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
+    public VehicleModel(int idVehicle, int vehicleOwner, String vehicleLicenseplate, String vehicleType, String vehicleModel, int vehicleYear, String vehicleColor, LocalDateTime vehicleRegistryDatetime, String vehiclePicture, int vehicleCapacity, String vehicleBrand, String vehicleServiceType, String vehicleBody, Date vehicleSoatExpiration, int vehicleEngine, String vehicleGasType){
         
         this.vehicleOwner = vehicleOwner;
         this.vehicleLicenseplate = vehicleLicenseplate;
@@ -84,7 +84,7 @@ public class VehicleModel{
     
     private String vehicleLicenseplate;
     
-    private int vehicleType;
+    private String vehicleType;
     
     private String vehicleModel;
     
