@@ -250,16 +250,17 @@ public class VehicleController {
             UserModel user = userService.findByUserMail( email );
             VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
 
-            String profilePic = vehicleModel.getVehiclePicture();
+            String vehicleImg = vehicleModel.getVehiclePicture();
 
-            if(!profilePic.equals("")){
+            if (vehicleImg == null) vehicleImg = "";
+
+            if(!vehicleImg.equals("")){
 
                 String data = "";
                 String os = System.getProperty("os.name");
 
                 if (os.equals("Windows 10")){
 
-                    logger.error("ENTRA WINDOWS 10");
 
                     String picAddres = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\vehicles\\" + email + "vehicle" + ".txt";
                     File base64 = new File(picAddres);
