@@ -170,6 +170,7 @@ public class VehiclePOJO {
 
     public VehicleModel getModel( int idUser) {
         VehicleModel vehicle = new VehicleModel();
+        vehicle.setIdVehicle(getIdVehicle());
         vehicle.setVehicleOwner(idUser);
         vehicle.setVehicleLicenseplate(getVehicleLicenseplate());
         vehicle.setVehicleType(getVehicleType());
@@ -185,6 +186,7 @@ public class VehiclePOJO {
         vehicle.setVehicleSoatExpiration(getVehicleSoatExpiration());
         vehicle.setVehicleEngine(getVehicleEngine());
         vehicle.setVehicleGasType(getVehicleGasType());
+
         return vehicle;
     }
 

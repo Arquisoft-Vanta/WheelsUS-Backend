@@ -2,6 +2,7 @@ package App.BusinessLayer.Services;
 
 import App.BusinessLayer.Repositories.VehicleRepository;
 import App.DataLayer.Models.FavoriteDirectionModel;
+import App.DataLayer.Models.NotificationModel;
 import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 import java.util.List;
@@ -35,7 +36,8 @@ public class VehicleService {
         vehicleRepository.deleteById(id);
     }
 
-    public List<VehicleModel> getVehicleByUser(UserModel user ){
-        return vehicleRepository.getVehicleByUser( user);
+    public VehicleModel getVehicleByvehicleOwner(int userID ){
+        return vehicleRepository.getVehicleByvehicleOwner( userID);
     }
+
 }

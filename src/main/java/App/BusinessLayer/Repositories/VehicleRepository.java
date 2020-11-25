@@ -13,8 +13,8 @@ import java.util.List;
  * @author cesar
  */
 public interface VehicleRepository extends CrudRepository<VehicleModel, Integer>{
-    @Query("SELECT a FROM VehicleModel a WHERE a.userModel = :user")
-    List<VehicleModel> getVehicleByUser(UserModel user);
+    @Query("SELECT a FROM VehicleModel a WHERE a.vehicleOwner = :userID")
+    VehicleModel getVehicleByvehicleOwner(int userID);
 
-
+    //public VehicleModel findByvehicleOwner
 }
