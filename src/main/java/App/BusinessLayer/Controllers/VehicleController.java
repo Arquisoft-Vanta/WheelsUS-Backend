@@ -208,7 +208,10 @@ public class VehicleController {
 
                 if (os.equals("Windows 10")){
 
-                    String picRoute = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\vehicles\\" + fileName;
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picRoute = namePathDone + "\\pictures\\vehicles\\" + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
@@ -261,8 +264,11 @@ public class VehicleController {
 
                 if (os.equals("Windows 10")){
 
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
 
-                    String picAddres = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\vehicles\\" + email + "vehicle" + ".txt";
+
+                    String picAddres = namePathDone + "\\pictures\\vehicles\\" + email + "vehicle" + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
 
