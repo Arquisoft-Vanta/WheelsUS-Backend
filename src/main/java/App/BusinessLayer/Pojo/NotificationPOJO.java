@@ -15,7 +15,17 @@ public class NotificationPOJO {
     private String destination;
     
     private int idUser;
+    
+    private String mailUser;
+    
+    public String getMailUser() {
+        return mailUser;
+    }
 
+    public void setMailUser(String mailUser) {
+        this.mailUser = mailUser;
+    }
+    
     public int getIdNotification() {
         return idNotification;
     }

@@ -22,6 +22,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,7 +76,20 @@ public class NotificationController {
 
         }
     }
-     
     
-    
+    @PostMapping
+    public ResponseEntity<Void> createNotification(@RequestBody NotificationPOJO notificationPojo){
+        
+        try {
+            UserModel user = userService.findByUserMail(notificationPojo.getMailUser());
+            notificationPojo.setIdUser(user.getIdUser());
+            notificationService.save(notificationPojo.getModel());
+            logger.trace(HttpStatus.CREATED.toString());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        
+    }
 }
