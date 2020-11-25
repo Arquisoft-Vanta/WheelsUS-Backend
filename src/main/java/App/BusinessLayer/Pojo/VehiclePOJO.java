@@ -12,7 +12,7 @@ public class VehiclePOJO {
 
     private String vehicleLicenseplate;
 
-    private int vehicleType;
+    private String vehicleType;
 
     private String vehicleModel;
 
@@ -64,11 +64,11 @@ public class VehiclePOJO {
         this.vehicleLicenseplate = vehicleLicenseplate;
     }
 
-    public int getVehicleType() {
+    public String getVehicleType() {
         return vehicleType;
     }
 
-    public void setVehicleType(int vehicleType) {
+    public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
     }
 
@@ -170,6 +170,7 @@ public class VehiclePOJO {
 
     public VehicleModel getModel( int idUser) {
         VehicleModel vehicle = new VehicleModel();
+        vehicle.setIdVehicle(getIdVehicle());
         vehicle.setVehicleOwner(idUser);
         vehicle.setVehicleLicenseplate(getVehicleLicenseplate());
         vehicle.setVehicleType(getVehicleType());
@@ -185,6 +186,7 @@ public class VehiclePOJO {
         vehicle.setVehicleSoatExpiration(getVehicleSoatExpiration());
         vehicle.setVehicleEngine(getVehicleEngine());
         vehicle.setVehicleGasType(getVehicleGasType());
+
         return vehicle;
     }
 

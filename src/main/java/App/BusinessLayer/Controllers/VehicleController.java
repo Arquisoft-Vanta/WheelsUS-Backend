@@ -1,10 +1,12 @@
 package App.BusinessLayer.Controllers;
 
 import App.BusinessLayer.Pojo.FavoriteDirectionPOJO;
+import App.BusinessLayer.Pojo.NotificationPOJO;
 import App.BusinessLayer.Pojo.VehiclePOJO;
 import App.BusinessLayer.Services.UserService;
 import App.BusinessLayer.Services.VehicleService;
 import App.DataLayer.Models.FavoriteDirectionModel;
+import App.DataLayer.Models.NotificationModel;
 import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 
@@ -167,17 +169,13 @@ public class VehicleController {
     }*/
 
     @PostMapping(value = {"/new-vehicle"})
-    public ResponseEntity<Void> addVehicleToUser(@RequestBody VehiclePOJO pojo) {
-        logger.error(pojo.toString());
-        String username =
-                SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.error(username);
-        UserModel existingUser = userService.findByUserMail(username);
-        logger.error(existingUser.getIdUser() + "");
+    public ResponseEntity<Void> addVehicleToUser(@RequestBody VehiclePOJO vehiclePOJO) {
+
         try {
-            logger.error(pojo.getModel(existingUser.getIdUser()).toString());
-            existingUser.addVehicle(vehicleService.save(pojo.getModel(existingUser.getIdUser())));
-            //favoriteDirectionService.save(fillModel(pojo));
+            String email = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail(email);
+            vehiclePOJO.setVehicleOwner(user.getIdUser());
+            vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
@@ -186,21 +184,51 @@ public class VehicleController {
         }
     }
 
+    @PutMapping(value = {"/update-vehicle"})
+    public ResponseEntity<Void> updateVehicleToUser(@RequestBody VehiclePOJO vehiclePOJO) {
+
+        try {
+            String email = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail(email);
+            vehiclePOJO.setVehicleOwner(user.getIdUser());
+            VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
+
+            if (vehicleModel == null){
+                vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
+            }else {
+                vehiclePOJO.setIdVehicle(vehicleModel.getIdVehicle());
+                vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
+            }
+
+            logger.trace(HttpStatus.CREATED.toString());
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     @GetMapping("/show-vehicles")
-    public List<VehiclePOJO> getVehicleByUser() {
-        String email =
-                SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.error(email);
-        UserModel user = userService.findByUserMail(email);
-        logger.error(user.getUserMail());
-        List<VehicleModel> vehicleModels =
-                vehicleService.getVehicleByUser(user);
-        List<VehiclePOJO> vehicles = new ArrayList<>();
-        for (VehicleModel vehicle : vehicleModels) {
-            vehicles.add(new VehiclePOJO(vehicle));
+    public ResponseEntity<VehiclePOJO> getVehicleByUser() {
+
+        try {
+            String email = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail( email );
+            VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
+
+            return ResponseEntity.ok(new VehiclePOJO(vehicleModel));
+        } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (EntityNotFoundException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e){
+            logger.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         }
-        return vehicles;
     }
 
     // DeleteMapping hace una peticion delete a la ruta del controlador
