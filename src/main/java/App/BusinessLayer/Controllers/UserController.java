@@ -138,14 +138,9 @@ public class UserController {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             UserModel user = userService.findByUserMail( email );
-
             String profilePic = user.getPicture();
 
-            logger.error(profilePic);
-
             if(!profilePic.equals("")){
-
-                logger.error("entra GET");
 
                 String data = "";
                 String os = System.getProperty("os.name");
