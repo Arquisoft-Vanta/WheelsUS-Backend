@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -137,6 +138,43 @@ public class UserController {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
             UserModel user = userService.findByUserMail( email );
+
+            String profilePic = user.getPicture();
+
+            logger.error(profilePic);
+
+            if(!profilePic.equals("")){
+
+                logger.error("entra GET");
+
+                String data = "";
+                String os = System.getProperty("os.name");
+
+                if (os.equals("Windows 10")){
+
+                    String picAddres = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + email + ".txt";
+                    File base64 = new File(picAddres);
+                    Scanner myReader = new Scanner(base64);
+
+                    while (myReader.hasNextLine()) {
+                        data = myReader.nextLine();
+                    }
+                    myReader.close();
+                    user.setPicture(data);
+
+                }else{
+                    String picAddres = "../../../pictures/profile/" + email + ".txt";
+                    File base64 = new File(picAddres);
+                    Scanner myReader = new Scanner(base64);
+                    while (myReader.hasNextLine()) {
+                        data = myReader.nextLine();
+                    }
+                    myReader.close();
+
+                    user.setPicture(data);
+                }
+            }
+
             return ResponseEntity.ok(new UserPOJO(user));
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
@@ -147,7 +185,6 @@ public class UserController {
         } catch (Exception e){
             logger.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
 
     }
@@ -222,26 +259,29 @@ public class UserController {
             UserModel user = userService.findByUserMail( email );
             String imgSelected = userPOJO.getPicture();
 
-            if (imgSelected != ""){
-                String fileAddress = email + ".txt";
+            if (!imgSelected.equals("")){
+
+                String fileName = email + ".txt";
 
                 String os = System.getProperty("os.name");
-                logger.error(os);
 
-                /*if (os == "windows"){
-                    File myObj = new File("..\\..\\..\\pictures\\profile\\" + fileAddress );
-                    FileWriter wrt = new FileWriter(fileAddress);
+                if (os.equals("Windows 10")){
+
+                    String picRoute = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + fileName;
+                    File myObj = new File(picRoute);
+                    FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
                     wrt.close();
-                    userPOJO.setPicture(fileAddress);
+                    userPOJO.setPicture(picRoute);
 
                 }else{
-                    File myObj = new File("../../../pictures/profile/" + fileAddress );
-                    FileWriter wrt = new FileWriter(fileAddress);
+                    String picRoute = "../../../pictures/profile/" + fileName;
+                    File myObj = new File(picRoute);
+                    FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
                     wrt.close();
-                    userPOJO.setPicture(fileAddress);
-                }*/
+                    userPOJO.setPicture(picRoute);
+                }
 
             }
 
@@ -257,10 +297,10 @@ public class UserController {
         } catch (EntityNotFoundException e) {
             logger.error(HttpStatus.NOT_FOUND.toString());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } /*catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
+        }
     }
 
     // DeleteMapping hace una peticion delete a la ruta del controlador
