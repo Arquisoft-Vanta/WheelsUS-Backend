@@ -10,8 +10,11 @@ import App.DataLayer.Models.NotificationModel;
 import App.DataLayer.Models.UserModel;
 import App.DataLayer.Models.VehicleModel;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -193,6 +196,36 @@ public class VehicleController {
             vehiclePOJO.setVehicleOwner(user.getIdUser());
             VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
 
+            String imgSelected = vehiclePOJO.getVehiclePicture();
+
+            if (imgSelected == null) imgSelected = "";
+
+            if (!imgSelected.equals("")){
+
+                String fileName = email + "vehicle" + ".txt";
+
+                String os = System.getProperty("os.name");
+
+                if (os.equals("Windows 10")){
+
+                    String picRoute = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\vehicles\\" + fileName;
+                    File myObj = new File(picRoute);
+                    FileWriter wrt = new FileWriter(picRoute);
+                    wrt.write(imgSelected);
+                    wrt.close();
+                    vehiclePOJO.setVehiclePicture(picRoute);
+
+                }else{
+                    String picRoute = "../../../pictures/vehicles/" + fileName;
+                    File myObj = new File(picRoute);
+                    FileWriter wrt = new FileWriter(picRoute);
+                    wrt.write(imgSelected);
+                    wrt.close();
+                    vehiclePOJO.setVehiclePicture(picRoute);
+                }
+
+            }
+
             if (vehicleModel == null){
                 vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
             }else {
@@ -217,7 +250,42 @@ public class VehicleController {
             UserModel user = userService.findByUserMail( email );
             VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
 
+            String profilePic = vehicleModel.getVehiclePicture();
+
+            if(!profilePic.equals("")){
+
+                String data = "";
+                String os = System.getProperty("os.name");
+
+                if (os.equals("Windows 10")){
+
+                    logger.error("ENTRA WINDOWS 10");
+
+                    String picAddres = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\vehicles\\" + email + "vehicle" + ".txt";
+                    File base64 = new File(picAddres);
+                    Scanner myReader = new Scanner(base64);
+
+                    while (myReader.hasNextLine()) {
+                        data = myReader.nextLine();
+                    }
+                    myReader.close();
+                    vehicleModel.setVehiclePicture(data);
+
+                }else{
+                    String picAddres = "../../../pictures/vehicles/" + email + "vehicle" + ".txt";
+                    File base64 = new File(picAddres);
+                    Scanner myReader = new Scanner(base64);
+                    while (myReader.hasNextLine()) {
+                        data = myReader.nextLine();
+                    }
+                    myReader.close();
+
+                    vehicleModel.setVehiclePicture(data);
+                }
+            }
+
             return ResponseEntity.ok(new VehiclePOJO(vehicleModel));
+
         } catch (JsonParseException e) {
             logger.error(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
