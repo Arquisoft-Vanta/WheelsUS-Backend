@@ -192,12 +192,18 @@ public class VehicleController {
             UserModel user = userService.findByUserMail(email);
             vehiclePOJO.setVehicleOwner(user.getIdUser());
             VehicleModel vehicleModel = vehicleService.getVehicleByvehicleOwner(user.getIdUser());
-            vehiclePOJO.setIdVehicle(vehicleModel.getIdVehicle());
-            vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
+
+            if (vehicleModel == null){
+                vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
+            }else {
+                vehiclePOJO.setIdVehicle(vehicleModel.getIdVehicle());
+                vehicleService.save(vehiclePOJO.getModel(user.getIdUser()));
+            }
+
             logger.trace(HttpStatus.CREATED.toString());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
-            logger.error(HttpStatus.BAD_REQUEST.toString());
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
