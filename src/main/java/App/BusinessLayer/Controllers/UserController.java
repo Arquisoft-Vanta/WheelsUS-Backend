@@ -146,7 +146,10 @@ public class UserController {
 
                 if (os.equals("Windows 10")){
 
-                    String picAddres = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + email + ".txt";
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picAddres = namePathDone + "\\pictures\\profile\\" + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
 
@@ -261,7 +264,10 @@ public class UserController {
 
                 if (os.equals("Windows 10")){
 
-                    String picRoute = "C:\\Users\\sebas\\Documents\\Codigos\\WheelsUN\\WheelsUS-Backend\\pictures\\profile\\" + fileName;
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picRoute = namePathDone + "\\pictures\\profile\\" + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
