@@ -301,7 +301,7 @@ public class VehicleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e){
             logger.error(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         }
     }
