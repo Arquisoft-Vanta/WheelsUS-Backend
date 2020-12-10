@@ -278,7 +278,10 @@ public class UserController {
                     userPOJO.setPicture(picRoute);
 
                 }else{
-                    String picRoute = "../../../pictures/profile/" + fileName;
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picRoute = namePathDone + "/pictures/profile/" + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);

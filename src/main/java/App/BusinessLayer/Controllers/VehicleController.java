@@ -281,7 +281,11 @@ public class VehicleController {
                     vehicleModel.setVehiclePicture(data);
 
                 }else{
-                    String picAddres = "../../../pictures/vehicles/" + email + "vehicle" + ".txt";
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+
+                    String picAddres = namePathDone + "/pictures/vehicles/" + email + "vehicle" + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
                     while (myReader.hasNextLine()) {
