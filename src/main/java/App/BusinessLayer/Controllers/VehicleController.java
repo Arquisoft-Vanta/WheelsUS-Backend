@@ -282,10 +282,10 @@ public class VehicleController {
 
                 }else{
                     File namePath = new File(".");
-                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/vehicles";
+                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/vehicles/";
 
 
-                    String picAddres = namePathDone + email + "vehicle" + ".txt";
+                    String picAddres = namePathDone + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
                     while (myReader.hasNextLine()) {
