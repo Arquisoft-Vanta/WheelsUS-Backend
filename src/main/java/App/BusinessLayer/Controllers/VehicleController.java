@@ -220,8 +220,8 @@ public class VehicleController {
 
                 }else{
                     File namePath = new File(".");
-                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
-                    String picRoute = namePathDone +"/pictures/vehicles/" + fileName;
+                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/vehicles/";
+                    String picRoute = namePathDone + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
@@ -282,10 +282,10 @@ public class VehicleController {
 
                 }else{
                     File namePath = new File(".");
-                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/vehicles";
 
 
-                    String picAddres = namePathDone + "/pictures/vehicles/" + email + "vehicle" + ".txt";
+                    String picAddres = namePathDone + email + "vehicle" + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
                     while (myReader.hasNextLine()) {

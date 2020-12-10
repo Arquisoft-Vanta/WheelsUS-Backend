@@ -161,8 +161,8 @@ public class UserController {
 
                 }else{
                     File namePath = new File(".");
-                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
-                    String picAddres = namePathDone + "/pictures/profile/" + email + ".txt";
+                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/profile/";
+                    String picAddres = namePathDone + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
                     while (myReader.hasNextLine()) {
@@ -278,9 +278,9 @@ public class UserController {
 
                 }else{
                     File namePath = new File(".");
-                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+                    String namePathDone = "/home/engdiazmu/WheelsUS-Backend/pictures/profile/";
 
-                    String picRoute = namePathDone + "/pictures/profile/" + fileName;
+                    String picRoute = namePathDone + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
