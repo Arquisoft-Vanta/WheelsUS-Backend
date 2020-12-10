@@ -163,7 +163,6 @@ public class UserController {
                 }else{
                     File namePath = new File(".");
                     String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
-
                     String picAddres = namePathDone + "/pictures/profile/" + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);

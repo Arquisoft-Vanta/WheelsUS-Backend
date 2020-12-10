@@ -221,7 +221,6 @@ public class VehicleController {
                 }else{
                     File namePath = new File(".");
                     String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
-
                     String picRoute = namePathDone +"/pictures/vehicles/" + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
