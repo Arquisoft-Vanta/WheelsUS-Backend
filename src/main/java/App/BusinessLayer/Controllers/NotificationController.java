@@ -17,10 +17,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParseException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,7 +63,6 @@ public class NotificationController {
             ArrayList<NotificationPOJO> listapojo = new ArrayList<>();
             for (NotificationModel notificationModel : lista) {
                 listapojo.add(new NotificationPOJO(notificationModel));
-                logger.error(listapojo.toString());
             }
             return ResponseEntity.ok(listapojo);
         } catch (JsonParseException e) {
@@ -91,5 +92,27 @@ public class NotificationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         
+    }
+    
+     // DeleteMapping hace una peticion delete a la ruta del controlador
+    @DeleteMapping
+    public ResponseEntity<Void> deleteByidUser() {
+        try {
+            String email = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+            UserModel user = userService.findByUserMail( email );
+            ArrayList<NotificationModel> lista = (ArrayList<NotificationModel>) notificationService.getNotificationByUser(user.getIdUser());
+            for (NotificationModel notificationModel : lista) {
+                notificationService.deleteById(notificationModel.getIdNotification());
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            logger.error(HttpStatus.NOT_FOUND.toString());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (JsonParseException e) {
+            logger.error(HttpStatus.BAD_REQUEST.toString());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        }
+
     }
 }
