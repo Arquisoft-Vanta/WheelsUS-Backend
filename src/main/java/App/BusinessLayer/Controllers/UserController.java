@@ -161,7 +161,10 @@ public class UserController {
                     user.setPicture(data);
 
                 }else{
-                    String picAddres = "../../../pictures/profile/" + email + ".txt";
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picAddres = namePathDone + "/pictures/profile/" + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
                     while (myReader.hasNextLine()) {

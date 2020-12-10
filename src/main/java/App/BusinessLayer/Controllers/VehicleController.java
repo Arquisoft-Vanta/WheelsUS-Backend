@@ -219,7 +219,10 @@ public class VehicleController {
                     vehiclePOJO.setVehiclePicture(picRoute);
 
                 }else{
-                    String picRoute = "../../../pictures/vehicles/" + fileName;
+                    File namePath = new File(".");
+                    String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
+
+                    String picRoute = namePathDone +"/pictures/vehicles/" + fileName;
                     File myObj = new File(picRoute);
                     FileWriter wrt = new FileWriter(picRoute);
                     wrt.write(imgSelected);
