@@ -133,6 +133,7 @@ public class UserController {
             try {
                 email =
                         SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
+                email = passwordEncoder.encode(email);
             }catch (EntityNotFoundException e){
                 logger.error(HttpStatus.UNAUTHORIZED.toString());
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -149,7 +150,6 @@ public class UserController {
 
                     File namePath = new File(".");
                     String namePathDone = namePath.getAbsoluteFile().getParentFile().getCanonicalPath();
-
                     String picAddres = namePathDone + "\\pictures\\profile\\" + email + ".txt";
                     File base64 = new File(picAddres);
                     Scanner myReader = new Scanner(base64);
